@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Art History Timeline · created by Terrins T. Hortelano</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;1,300&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;box-sizing:border-box}
+*{box-sizing:border-box;margin:0}
+html,body{background:#000;color:#ecebf2;font:300 16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+#story{height:calc(17*2000vh);height:calc(17*2000svh);position:relative}
+#stage{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;background:#000;--c:#fff}
+.L{position:absolute;inset:0;opacity:0;pointer-events:none;will-change:transform,opacity}
+#tl{opacity:1}
+#lst{position:absolute;top:0;left:50%;width:min(560px,100vw);margin-left:calc(min(560px,100vw)/-2)}
+#lst h3{position:absolute;top:-130px;width:100%;text-align:center;font:300 13px Inter;letter-spacing:.4em;color:#8d8ca0}
+.node{display:grid;grid-template-columns:1fr 96px 1fr;align-items:center;position:relative;height:150px;--c:#fff}
+.bar{position:absolute;left:50%;top:75px;width:5px;height:150px;margin-left:-2.5px;background:#2c3446;z-index:0}
+.lit{position:absolute;left:0;top:0;width:100%;height:0;background:var(--bc);transition:background .8s;box-shadow:0 0 22px 3px var(--bc)}
+.ring{grid-column:2;width:96px;height:96px;border-radius:50%;border:0;cursor:pointer;background:conic-gradient(var(--c) calc(var(--p)*1%),#232a38 0);display:grid;place-items:center;color:#ecebf2;font:600 13px Inter;position:relative;pointer-events:auto}
+.ring::before{content:"";position:absolute;width:76px;height:76px;border-radius:50%;background:#050509}
+.ring span{position:relative;z-index:2;font-size:15px}.ring{z-index:1}
+.lab{font:400 13px Inter;color:#8d8ca0}
+.lab b{display:block;color:#ecebf2;font:700 16px Fraunces,serif;letter-spacing:.05em;text-transform:uppercase}
+.node.nl .lab{grid-column:1;grid-row:1;text-align:right;padding-right:1.4rem}
+.node.nr .lab{grid-column:3;grid-row:1;padding-left:1.4rem}
+#ttl{display:grid;place-items:center;text-align:center}
+#ttl>div{width:100%;padding:0 4vw}
+#ttl h2{display:inline-block;white-space:nowrap;font:300 100px/1 Fraunces,serif;letter-spacing:.04em;text-transform:uppercase;color:#fff;text-shadow:0 0 60px var(--c)}
+#ttl p{letter-spacing:.4em;color:var(--c);font-size:12px;margin-bottom:1rem}
+#hist{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:3vw;align-items:center;padding:8vh 7vw}
+#hl{display:grid;align-self:center}
+.s{grid-area:1/1;font:300 clamp(16px,1.7vw,22px)/1.55 Fraunces,serif;color:#fff;opacity:0;visibility:hidden;border-left:2px solid var(--c);padding-left:1rem;will-change:transform,opacity}
+.w{display:inline-block;will-change:transform,opacity}
+.s h4{font:600 11px Inter;letter-spacing:.35em;color:var(--c);margin-bottom:.5em}
+.ch{display:inline-block;margin:.25em .4em .25em 0;padding:.3em .95em;border:1px solid var(--c);border-radius:18px;font:400 .85em/1.35 Inter,sans-serif;opacity:0;transition:background .35s,box-shadow .35s;will-change:transform,opacity}
+.ch.hot{background:color-mix(in srgb,var(--c) 32%,transparent);box-shadow:0 0 22px var(--c)}
+.fg{perspective:900px;display:grid;place-items:center;height:50vh}
+.cube{position:relative;width:200px;height:200px;transform-style:preserve-3d;will-change:transform}
+.cube div{position:absolute;inset:0;border:1px solid var(--c);background:linear-gradient(135deg,color-mix(in srgb,var(--c) 35%,transparent),rgba(0,0,0,.6));display:grid;place-items:center;text-align:center;font:italic 300 22px Fraunces,serif;backface-visibility:visible}
+.cube small{display:block;font:600 11px Inter;letter-spacing:.3em;color:var(--c)}
+.cube::after,.cube::before{content:"";position:absolute;left:-90px;top:-90px;width:380px;height:380px;border-radius:50%;border:1px solid var(--c);transform:rotateX(75deg);animation:sp 6s linear infinite}
+.cube::before{transform:rotateY(75deg);animation-duration:9s;opacity:.5}
+@keyframes sp{to{rotate:360deg}}
+/* ===== cinematic entrance: light slit + anamorphic flare ===== */
+#door i{position:absolute;left:50%;top:50%;display:block;pointer-events:none;will-change:transform,opacity}
+#ls{width:100vw;height:3px;margin:-1px 0 0 -50vw;background:linear-gradient(90deg,transparent,#fff 18%,#fff 82%,transparent);box-shadow:0 0 16px 3px var(--c),0 0 70px 12px var(--c);opacity:0}
+#lf{width:70vmax;height:50vmin;margin:-25vmin 0 0 -35vmax;background:radial-gradient(ellipse,#fff 0,var(--c) 12%,transparent 60%);mix-blend-mode:screen;filter:blur(10px);opacity:0}
+#e1,#e2{width:100vw;height:2px;margin:-1px 0 0 -50vw;background:#fff;box-shadow:0 0 14px 3px var(--c),0 0 60px 8px var(--c);opacity:0}
+#dl{position:absolute;left:0;top:calc(50% + 26px);width:100%;text-align:center;white-space:nowrap;font:600 12px Inter;letter-spacing:.4em;color:var(--c);padding:0 4vw}
+#walk{perspective:800px;overflow:hidden}
+#cam,#rm,#cds{position:absolute;inset:0;transform-style:preserve-3d}.pl{position:absolute;left:50%;top:50%;transform-origin:0 0;background:repeating-linear-gradient(0deg,color-mix(in srgb,var(--c) 45%,transparent) 0 1px,transparent 1px 100px),repeating-linear-gradient(90deg,color-mix(in srgb,var(--c) 45%,transparent) 0 1px,transparent 1px 100px),rgba(4,4,8,.9)}
+#cam{position:absolute;inset:0;transform-style:preserve-3d}
+.cd{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
+.cd>div{position:absolute;left:-30vmin;top:-17vmin;display:flex;gap:2vmin;align-items:center;width:max-content}
+.fr{width:34vmin;height:34vmin;border:.9vmin solid var(--c);outline:1px solid var(--c);outline-offset:.8vmin;background:#0b0b12;box-shadow:0 0 50px color-mix(in srgb,var(--c) 40%,transparent);flex:none;overflow:hidden}.sl{width:100%;height:100%;display:grid;place-items:center;text-align:center;font:600 1.5vmin/2 Inter;letter-spacing:.3em;color:var(--c);background:repeating-linear-gradient(45deg,#0b0b12 0 12px,#10101a 12px 24px)}.sl img{width:100%;height:100%;object-fit:cover}.sk{position:absolute;inset:0;pointer-events:none;opacity:0;transform:rotate(calc(var(--p)*3.6deg))}.sk::after{content:"";position:absolute;left:50%;top:-5px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:#fff;box-shadow:0 0 20px 8px var(--c)}
+.tx{width:24vmin;transition:opacity .6s,transform .6s;opacity:0;transform:translateY(20px)}
+.cd.near .tx{opacity:1;transform:none}
+.tx em{display:block;font:italic 400 2.6vmin/1.2 Fraunces,serif;color:#fff}
+.tx small{display:block;color:var(--c);font-size:1.6vmin;letter-spacing:.2em;text-transform:uppercase;margin:.5em 0}
+.tx span{font-size:1.9vmin;color:#c9c8d6}
+#sp{width:100%;height:100%}
+#hud{position:absolute;left:5vw;top:calc(3vh + env(safe-area-inset-top,0px));font:600 11px Inter;letter-spacing:.3em;color:var(--c);z-index:5;pointer-events:none}
+#rm{display:none}#bk{position:absolute;inset:0;width:100%;height:100%;opacity:.65}#fc{width:min(46vh,100%);aspect-ratio:1;filter:drop-shadow(0 0 30px var(--c))}#mu{position:fixed;right:4vw;bottom:calc(3vh + env(safe-area-inset-bottom,0px));z-index:30;background:#0008;color:#ecebf2;border:1px solid #666;border-radius:99px;padding:.5rem 1rem;font:600 11px Inter;letter-spacing:.2em;cursor:pointer;backdrop-filter:blur(6px)}#cue{position:absolute;bottom:4vh;width:100%;text-align:center;font-size:11px;letter-spacing:.4em;color:#8d8ca0;z-index:5;pointer-events:none;animation:pu 2s infinite}
+@keyframes pu{50%{opacity:.2}}
+#end{padding:14vh 4vw;background:#050509;text-align:center}
+#end h2{font:300 clamp(40px,8vw,100px)/1 Fraunces,serif}#end h2 b{font-style:italic}
+#end .lst2{max-width:560px;margin:3rem auto 0;text-align:left}
+#end .node{cursor:pointer}
+.fr{position:relative}.sl img{object-fit:contain;background:#05050a}
+.fr::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 38%,#fff4 50%,transparent 62%);transform:translateX(var(--sh,-100%));box-shadow:inset 0 0 9vmin #000c}
+.lb{position:absolute;left:0;width:100%;background:#000;z-index:6;pointer-events:none;height:0}#lb1{top:0}#lb2{bottom:0}
+#bm{position:absolute;inset:0;pointer-events:none;opacity:0;z-index:4;background:radial-gradient(ellipse 45% 70% at 50% 0,color-mix(in srgb,var(--c) 55%,transparent),transparent 70%);mix-blend-mode:screen}
+#xt{white-space:nowrap;position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;opacity:0;z-index:7;font:300 clamp(24px,6vw,72px)/1.1 Fraunces,serif;text-transform:uppercase;color:#fff;text-shadow:0 0 50px var(--c);text-align:center}
+#xt small{display:block;font:600 11px Inter;letter-spacing:.5em;color:var(--c);margin-top:1rem}
+#lst h3 span{display:block;margin-top:.7rem;font-size:11px;letter-spacing:.25em;color:#ecebf2;text-transform:uppercase}
+/* ===== phone / portrait ===== */
+@media(max-aspect-ratio:1/1){
+#cds{transform:scale(1.5)}
+.cd>div{flex-direction:column;width:44vmin;left:-22vmin;top:-17vmin;gap:3.5vmin}
+.tx{width:100%;text-align:center}
+.tx em{font-size:3.6vmin}.tx small{font-size:2.2vmin}.tx span{font-size:2.9vmin}
+}
+@media(max-width:700px){
+#story{height:calc(17*1400vh);height:calc(17*1400svh)}
+#hist{padding:10vh 7vw 6vh;gap:2vh;align-content:center}
+.fg{height:34vh}#fc{width:min(32vh,78vw)}
+.s{font-size:17px}
+.node .lab{font-size:12px}.node .lab b{font-size:14px;letter-spacing:.02em}
+#xt small{letter-spacing:.22em;white-space:normal;padding:0 6vw}
+#dl{letter-spacing:.22em;font-size:11px}
+#mu{padding:.4rem .8rem;font-size:10px}
+}
+</style></head><body>
+<button id="mu">♪ MUSIC OFF</button>
+<div id="story"><div id="stage">
+<div id="hud"></div><div id="cue">SCROLL ↓</div>
+<div class="L" id="tl"><div id="lst"></div></div>
+<div class="L" id="cv"></div>
+<div class="L" id="ttl"><div><p id="tk"></p><h2 id="th"></h2></div></div>
+<div class="L" id="hist"><div id="hl"></div><div class="fg" id="hf"></div></div>
+<div class="L" id="walk"><canvas id="bk" width="500" height="500"></canvas><div id="cam"><div id="rm"><div class=pl style="width:1120px;height:14000px;margin-left:-560px;transform:translate3d(0,300px,1500px) rotateX(-90deg)"></div><div class=pl style="width:1120px;height:14000px;margin-left:-560px;transform:translate3d(0,-300px,1500px) rotateX(-90deg)"></div><div class=pl style="width:14000px;height:600px;transform:translate3d(-560px,-300px,1500px) rotateY(90deg)"></div><div class=pl style="width:14000px;height:600px;transform:translate3d(560px,-300px,1500px) rotateY(90deg)"></div></div><div id="cds"></div></div></div>
+<div class="L" id="door"><i id="lf"></i><i id="ls"></i><i id="e1"></i><i id="e2"></i><div id="dl">FAMOUS ARTISTS AND ARTWORKS</div></div>
+<div class="lb" id="lb1"></div><div class="lb" id="lb2"></div><div id="bm"></div><div id="xt"><div>Famous Artists<br>and Artworks<small id="xs"></small></div></div>
+<canvas class="L" id="sp"></canvas>
+</div></div>
+<section id="end"><p style="letter-spacing:.4em;font-size:12px;color:#8d8ca0">JOURNEY COMPLETE</p><h2>The Whole <b>Timeline</b></h2><p style="color:#8d8ca0;margin-top:1rem">Art History Timeline · created by Terrins T. Hortelano<br>Tap any era to travel back to it.</p><div class="lst2" id="l2"></div></section>
+<script>
+const D=`Renaissance Art|1400–1600|c. 1400–1600 (began in Italy, especially Florence).|A cultural “rebirth” that revived interest in classical antiquity, humanism, and the natural world after the Middle Ages. Artists studied anatomy, perspective, and proportion to create more realistic and idealized representations of people and space.|Linear perspective, realistic anatomy and proportion, balanced compositions, sfumato and chiaroscuro, classical themes and idealized beauty, oil painting and fresco techniques.|Leonardo da Vinci’s notebooks show he dissected human bodies to understand anatomy—something rare and risky at the time—helping create the highly realistic figures of the High Renaissance.|Mona Lisa~Leonardo da Vinci~sfumato softness;The Last Supper~Leonardo da Vinci~perspective centers Christ;Creation of Adam~Michelangelo~Sistine ceiling;School of Athens~Raphael~thinkers in ideal space;The Birth of Venus~Botticelli~myth revived;David~Michelangelo~marble ideal body;Arnolfini Portrait~Jan van Eyck~oil-paint detail
+Baroque Art|1600–1750|c. 1600–1750 (began in Rome).|An energetic, dramatic style that emerged during the Catholic Counter-Reformation and absolute monarchies. It aimed to overwhelm the viewer with emotion, grandeur, and theatrical effects.|Strong contrast of light and dark (chiaroscuro/tenebrism), dynamic movement, dramatic diagonals, rich colors, ornate detail, and emotional intensity.|Caravaggio’s realistic, sometimes brutal lighting and ordinary models shocked contemporaries and heavily influenced later artists across Europe.|Calling of Saint Matthew~Caravaggio~spotlight drama;The Night Watch~Rembrandt~militia in motion;Las Meninas~Velázquez~court puzzle;Ecstasy of Saint Teresa~Bernini~marble rapture;Girl with a Pearl Earring~Vermeer~quiet light;Judith Slaying Holofernes~Artemisia Gentileschi~fierce heroine;Descent from the Cross~Rubens~diagonal drama
+Rococo Art|1730–1780|c. 1720–1780 (centered in France).|A lighter, more playful reaction against the heavy drama of Baroque. It flourished in aristocratic salons and celebrated elegance, pleasure, and intimate scenes of leisure.|Pastel colors, soft curves, asymmetry, delicate ornamentation, themes of love, nature, and aristocratic playfulness.|The style is named after the French word rocaille (shell-like rockwork), reflecting the ornate shell and scroll motifs used in decoration.|The Swing~Fragonard~flirtatious fantasy;Pilgrimage to Cythera~Watteau~dreamy outing;Madame de Pompadour~Boucher~royal mistress;Marie Antoinette with a Rose~Vigée Le Brun~soft court portrait;The Blue Boy~Gainsborough~elegant English style;The Toilette of Venus~Boucher~pastel mythology;Apotheosis of the Spanish Monarchy~Tiepolo~ceiling in the sky
+Classicism|1760–1830|c. 1750–1830 (strongest after the mid-18th century).|A return to the clarity, order, and moral seriousness of ancient Greek and Roman art, inspired by Enlightenment ideals and archaeological discoveries (Pompeii, Herculaneum). It rejected Rococo frivolity in favor of civic virtue and restraint.|Clean lines, balanced composition, idealized figures, sober colors, classical subjects (history, mythology, civic duty), and a sense of rational order.|Jacques-Louis David’s paintings became visual propaganda for both the French Revolution and later Napoleon’s empire.|Oath of the Horatii~Jacques-Louis David~duty over family;Death of Marat~David~revolution’s martyr;Napoleon Crossing the Alps~David~heroic propaganda;La Grande Odalisque~Ingres~elongated beauty;Oedipus and the Sphinx~Ingres~crisp mythology;Cupid and Psyche~Canova~marble tenderness;The Death of Socrates~David~calm courage
+Romanticism|1800–1850|c. 1780–1850.|A reaction against Neoclassical reason and the Industrial Revolution. Artists emphasized emotion, imagination, the power of nature, the sublime, and individual experience.|Dramatic lighting and weather, intense emotion, wild or exotic landscapes, historical or literary subjects, loose brushwork, and a focus on the individual’s inner world.|Caspar David Friedrich’s lonely figures facing vast landscapes became icons of Romantic isolation and spiritual contemplation.|Wanderer above the Sea of Fog~Caspar David Friedrich~awe of nature;Liberty Leading the People~Delacroix~revolution;The Raft of the Medusa~Géricault~shipwreck horror;The Third of May 1808~Goya~war’s cruelty;The Fighting Temeraire~Turner~fading glory;The Hay Wain~Constable~English countryside;Saturn Devouring His Son~Goya~dark nightmare
+Realism|1840–1880|c. 1840–1880 (especially France).|Artists rejected idealized or romanticized subjects and instead depicted ordinary people, labor, and everyday life with honesty, often with social or political undertones.|Unidealized figures, ordinary subjects (peasants, workers, urban scenes), careful observation of detail, muted or natural colors, and a focus on contemporary reality.|Gustave Courbet deliberately painted large-scale works of ordinary laborers, challenging the tradition that only history or mythology deserved grand formats.|The Stone Breakers~Courbet~hard labor;The Gleaners~Millet~poor harvesters;Olympia~Manet~gaze that shocked;The Gross Clinic~Thomas Eakins~surgery unflinching;A Burial at Ornans~Courbet~village funeral;The Third-Class Carriage~Daumier~weary passengers;Barge Haulers on the Volga~Repin~human burden
+Impressionism|1860–1886|c. 1860s–1880s (France).|Artists left the studio to paint outdoors (en plein air), capturing fleeting effects of light and atmosphere rather than precise detail. The name came from a critic’s mocking review of Monet’s Impression, Sunrise.|Visible, broken brushstrokes, bright pure colors, focus on light and its changing effects, modern urban and leisure subjects, and open-air painting.|The invention of portable paint tubes in metal made outdoor painting practical for the first time, helping the movement develop.|Impression, Sunrise~Monet~the name-giver;Water Lilies~Monet~shimmering pond;Luncheon of the Boating Party~Renoir~friends in sun;The Dance Class~Degas~backstage ballet;Le Moulin de la Galette~Renoir~dappled dance;The Child’s Bath~Mary Cassatt~intimate motherhood;Boulevard Montmartre~Pissarro~city in rain
+Fauvism|1905–1910|c. 1905–1908 (brief but influential).|A short-lived French movement that used intense, non-naturalistic color for emotional expression rather than realistic description. Critics called the artists fauves (“wild beasts”).|Bold, pure, often arbitrary colors, simplified forms, energetic brushwork, and expressive rather than descriptive use of color.|Henri Matisse’s Woman with a Hat (1905) caused a scandal at the Salon d’Automne because of its shocking green stripe down the face and wild color choices.|Woman with a Hat~Matisse~scandalous colour;The Joy of Life~Matisse~dreamy nudes;Charing Cross Bridge~Derain~vivid London;Open Window, Collioure~Matisse~sea in pink;The Dance~Matisse~red figures circle;The Green Stripe~Matisse~colour as shadow;The Seine at Chatou~Vlaminck~fiery river
+Cubism|1907–1920s|c. 1907–1920s (pioneered in Paris).|Pablo Picasso and Georges Braque broke traditional single-point perspective, representing objects from multiple viewpoints at once and reducing forms to geometric planes.|Fragmented forms, geometric shapes, multiple simultaneous viewpoints, muted or later collage materials, and a flattened picture plane.|Picasso’s Les Demoiselles d’Avignon (1907) is often seen as the breakthrough work that launched Cubism, influenced in part by African sculpture.|Les Demoiselles d’Avignon~Picasso~the first break;Guernica~Picasso~war protest;Violin and Candlestick~Braque~shattered still life;Three Musicians~Picasso~collage colour;Portrait of Kahnweiler~Picasso~faceted dealer;Girl with a Mandolin~Picasso~fragmented music;Woman with a Guitar~Braque~layers of planes
+Futurism|1909–1944|1909–c. 1916 (Italy; manifesto published 1909).|An Italian movement that celebrated speed, technology, modern machines, and violence, rejecting the past in favor of a dynamic, industrial future.|Depiction of motion and energy, overlapping forms, radiating lines, bright colors, and themes of machines, speed, and urban life.|The founder, Filippo Tommaso Marinetti, published the Futurist Manifesto on the front page of a major French newspaper, deliberately seeking scandal and publicity.|Unique Forms of Continuity in Space~Boccioni~striding bronze;Dynamism of a Dog on a Leash~Balla~tiny legs blur;The City Rises~Boccioni~workers and horses;Street Light~Balla~light as motion;Armoured Train~Severini~war machine;Dynamism of a Cyclist~Boccioni~speed lines;Funeral of the Anarchist Galli~Carrà~riot chaos
+Expressionism|1905–1930s|c. 1905–1930s (strongest in Germany and Northern Europe).|Artists distorted form and color to express intense inner emotions, anxiety, and spiritual or psychological states rather than external reality.|Distorted figures and space, intense or jarring colors, heavy outlines, emotional exaggeration, and themes of isolation, fear, or spirituality.|Edvard Munch’s The Scream (1893) is often cited as a precursor; the later German groups Die Brücke and Der Blaue Reiter formalized the style.|The Scream~Edvard Munch~modern anxiety;Madonna~Munch~sensual and eerie;Street, Berlin~Kirchner~jagged city;Large Blue Horses~Franz Marc~spiritual animals;Composition VII~Kandinsky~near-abstract storm;Death and the Maiden~Egon Schiele~twisted embrace;The Prophet~Emil Nolde~carved faces
+Dadaism|1916–1924|c. 1916–1924 (began in Zürich during World War I).|An anti-art movement born from the trauma and absurdity of World War I. It rejected logic, traditional aesthetics, and bourgeois values through nonsense, chance, and provocation.|Collage, ready-mades, absurdity, nonsense poetry and performance, photomontage, and deliberate anti-aesthetic gestures.|Marcel Duchamp’s Fountain (1917)—a signed urinal submitted to an exhibition—became one of the most influential and controversial works in modern art history.|Fountain~Marcel Duchamp~a urinal as art;L.H.O.O.Q.~Duchamp~Mona Lisa mustache;Cut with the Kitchen Knife~Hannah Höch~photomontage;Bicycle Wheel~Duchamp~first readymade;Gift~Man Ray~iron with tacks;Merzbild~Kurt Schwitters~trash collage;Mechanical Head~Raoul Hausmann~empty mind
+Surrealism|1924–1950s|1924–1960s (officially launched with André Breton’s manifesto).|Building on Dada and Freudian ideas, Surrealists explored the unconscious, dreams, and irrational juxtapositions to free the imagination from rational control.|Dream-like or bizarre imagery, unexpected combinations of objects, precise technique mixed with fantasy, automatism, and exploration of the subconscious.|Salvador Dalí’s melting clocks in The Persistence of Memory (1931) were partly inspired by soft Camembert cheese melting in the sun.|The Persistence of Memory~Dalí~melting clocks;The Son of Man~Magritte~apple-faced man;The Treachery of Images~Magritte~“not a pipe”;The Two Fridas~Frida Kahlo~divided self;The Elephants~Dalí~spindly legs;Golconda~Magritte~raining men;The Robing of the Bride~Max Ernst~feathered fantasy
+Constructivism|1913–1930s|c. 1915–1930s (Russia, especially after the 1917 Revolution).|A Russian avant-garde movement that rejected “art for art’s sake” in favor of functional, socially useful art and design using industrial materials and geometric forms to serve the new socialist society.|Geometric abstraction, industrial materials (metal, glass, wood), emphasis on construction over composition, utilitarian design (posters, architecture, textiles), and a machine aesthetic.|Vladimir Tatlin’s never-built Monument to the Third International (a towering, rotating spiral structure) became the movement’s most famous symbolic project.|Monument to the Third International~Tatlin~tower that never was;Beat the Whites with the Red Wedge~El Lissitzky~geometric propaganda;Corner Counter-Relief~Tatlin~floating materials;Books!~Rodchenko~poster of a shout;Spatial Construction No. 12~Rodchenko~hanging forms;Column~Naum Gabo~transparent geometry;Palace of Labour~Vesnin Brothers~unbuilt giant
+Abstract Expressionism|1940s–1960s|c. 1940s–1950s (primarily New York).|The first major American-led international art movement. Artists emphasized spontaneous gesture, large scale, and pure emotional or spiritual expression through abstraction.|Large canvases, gestural or action painting, color fields, emphasis on process and the artist’s physical engagement, and non-representational forms.|Jackson Pollock’s “drip” technique involved laying canvases on the floor and pouring or flinging paint—making the act of painting itself a kind of performance.|Autumn Rhythm~Jackson Pollock~drip dance;No. 61 (Rust and Blue)~Rothko~glowing fields;Woman I~de Kooning~savage brush;Blue Poles~Pollock~tangled rhythm;Onement I~Barnett Newman~the “zip”;Hills of Nostalgia~Jose Joya~Filipino abstraction;Mahoning~Franz Kline~black strokes
+Pop Art|1950s–1970s|c. mid-1950s–1970s (Britain and then the United States).|Artists turned to popular culture, advertising, comic books, and mass-produced consumer goods, treating everyday commercial imagery as legitimate subject matter and often with irony or detachment.|Bold colors, commercial techniques (silkscreen, Ben-Day dots), appropriation of mass-media images, consumer products, celebrities, and a cool, impersonal approach.|Andy Warhol’s Campbell’s Soup Cans (1962) deliberately treated supermarket packaging with the same seriousness traditionally reserved for high art.|Campbell’s Soup Cans~Warhol~supermarket icon;Marilyn Diptych~Warhol~fame fading;Whaam!~Lichtenstein~comic explosion;Just What Is It…?~Richard Hamilton~first pop collage;Drowning Girl~Lichtenstein~melodrama;Floor Burger~Claes Oldenburg~giant soft food;Flag~Jasper Johns~symbol repainted
+Op Art|1960s|1960s (roots in the 1950s; peak mid-1960s).|A form of abstract art that uses precise geometric patterns and color relationships to create optical illusions of movement, vibration, or depth, engaging the viewer’s eye directly.|Geometric patterns (lines, grids, circles), high contrast (often black-and-white), carefully calculated color interactions, and effects that make the image appear to pulse, warp, or move.|The 1965 Museum of Modern Art exhibition The Responsive Eye made Op Art a popular sensation, influencing fashion, design, and advertising almost overnight.|Current~Bridget Riley~waves that buzz;Movement in Squares~Riley~warping grid;Fall~Riley~rippling lines;Cataract 3~Riley~colour undulation;Zebra~Victor Vasarely~striped illusion;Vega-Nor~Vasarely~bulging grid;Homage to the Square~Josef Albers~colour relationships`;
+const E=D.split("\n").map((r,i)=>{const[a,b,c,d,e,f,g]=r.split("|"),m=b.match(/\d{4}/g),s0=+m[0],s1=m.length>1?+m[m.length-1]:s0;return{n:a,p:b,c:`hsl(${i*21+8} 85% 64%)`,h:i*21+8,w:c,y:d,ph:e,f:f,yr:[s0,s1+(/s$/.test(b)?9:0)],x:g.split(";").map(s=>s.split("~"))}});
+const $=s=>document.querySelector(s),cl=v=>Math.max(0,Math.min(1,v)),sg=(t,a,b)=>cl((t-a)/(b-a)),pad=i=>String(i+1).padStart(2,"0");
+const node=(e,k,st)=>`<div class="node ${k%2?"nr":"nl"}" style="--c:${e.c}"><button class=ring data-k=${k} style="--p:${st?100:0}" aria-label="${e.n}"><span>${pad(k)}</span><i class=sk></i></button><div class=lab><b>${e.n}</b>${e.p}</div>${k<16?`<div class=bar><i class=lit style="--bc:${E[k+1].c};height:${st?100:0}%"></i></div>`:""}</div>`;
+$("#lst").innerHTML="<h3>ART HISTORY TIMELINE<span>created by Terrins T. Hortelano</span></h3>"+E.map((e,k)=>node(e,k)).join("");
+$("#l2").innerHTML=E.map((e,k)=>node(e,k,1)).join("");
+const rings=[...document.querySelectorAll("#lst .ring")],lits=[...document.querySelectorAll("#lst .lit")],story=$("#story"),stg=$("#stage"),H=()=>innerHeight;
+/* ============ PUT YOUR IMAGE LINKS HERE ============
+   One row per era (same order as the page), 7 slots per row (same order as the examples).
+   Paste a link or file path between the quotes. Empty "" keeps the empty frame.
+   The empty frame shows its own address, e.g. "ADD IMAGE 01-1" = row 01, slot 1.
+   EXAMPLE (Renaissance, Mona Lisa) → first row, first slot:
+      ["https://example.com/mona-lisa.jpg","","","","","",""],
+   Local file example: "images/mona-lisa.jpg" (keep the images folder next to this html file) */
+const P="https://upload.wikimedia.org/wikipedia/commons/";
+const IMG=`
+7/73/Leonardo_da_Vinci_-_Mona_Lisa_%28Louvre%2C_Paris%29.jpg@960 b/b4/Last_Supper_by_Leonardo_da_Vinci.jpg@1280 0/0f/Creation_of_Adam%2C_Michelangelo_%281475%E2%80%931564%29%2C_circa_1511.jpg f/f2/The_School_of_Athens_by_Raffaello_Sanzio_da_Urbino.jpg@1280 7/7d/Botticelli_Venus.jpg@1280 9/91/David_%28Michelangelo%29_%2851351491513%29.jpg@1280 6/62/Arnolfini_Portrait.jpg@960
+4/48/The_Calling_of_Saint_Matthew-Caravaggo_%281599-1600%29.jpg@1280 2/29/The_Night_Watch_-_cropped.jpg@1280 f/f8/Las_Meninas_%281656%29%2C_by_Velazquez.jpg@1280 6/6b/Ecstasy_of_Saint_Teresa_September_2015-2a.jpg@960 0/0f/1665_Girl_with_a_Pearl_Earring.jpg@1280 2/22/%22Judith_slaying_Holofernes%22.jpg@960 0/0b/Peter_Paul_Rubens_-_The_Descent_from_the_Cross_-_WGA20214.jpg@960
+6/6a/The_Swing_%28Fragonard%29.jpg@960 1/1f/Jean-Antoine_Watteau_-_Pilgrimage_to_Cythera_-_Google_Art_Project.jpg@1280 8/8e/Fran%C3%A7ois_Boucher_-_Madame_de_Pompadour_-_WGA02887.jpg@960 3/3e/%C3%89lisabeth_Louise_Vig%C3%A9e_Le_Brun_-_Marie_Antoinette_with_a_Rose.jpg@960 8/8c/Thomas_Gainsborough_-_The_Blue_Boy.jpg@960 9/9e/Fran%C3%A7ois_Boucher_-_The_Toilet_of_Venus_-_WGA02890.jpg@960 5/5e/Giovanni_Battista_Tiepolo_-_Apotheosis_of_the_Spanish_Monarchy.jpg@1280
+2/2b/Jacques-Louis_David_-_Oath_of_the_Horatii_-_Google_Art_Project.jpg@1280 1/1f/Death_of_Marat_by_David.jpg@960 2/2d/Jacques-Louis_David_-_Napoleon_Crossing_the_Alps_-_Google_Art_Project.jpg@960 3/3e/Jean_Auguste_Dominique_Ingres_-_La_Grande_Odalisque_-_Google_Art_Project.jpg@1280 8/8e/Jean_Auguste_Dominique_Ingres_-_Oedipus_and_the_Sphinx.jpg@960 1/1e/Antonio_Canova_-_Psyche_Revived_by_Cupid%27s_Kiss_-_Louvre.jpg@960 8/8c/David_-_The_Death_of_Socrates.jpg@1280
+b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg@960 0/0a/Eug%C3%A8ne_Delacroix_-_La_libert%C3%A9_guidant_le_peuple.jpg@1280 1/15/Th%C3%A9odore_G%C3%A9ricault_-_The_Raft_of_the_Medusa.jpg@1280 5/5f/El_Tres_de_Mayo%2C_by_Francisco_de_Goya%2C_from_Prado_in_Google_Earth.jpg@1280 3/3d/Joseph_Mallord_William_Turner_-_The_Fighting_Temeraire_-_Google_Art_Project.jpg@1280 1/1a/John_Constable_-_The_Hay_Wain_%281821%29.jpg@1280 8/8f/Francisco_de_Goya%2C_Saturno_devorando_a_su_hijo_%281819-1823%29.jpg@960
+5/5c/Gustave_Courbet_-_The_Stonebreakers_-_Google_Art_Project.jpg@1280 1/1f/Jean-Fran%C3%A7ois_Millet_-_Gleaners_-_Google_Art_Project.jpg@1280 1/1f/%C3%89douard_Manet_-_Olympia_-_Google_Art_Project.jpg@1280 4/4e/Thomas_Eakins_-_The_Gross_Clinic.jpg@960 9/9e/Gustave_Courbet_-_A_Burial_at_Ornans_-_Google_Art_Project.jpg@1280 8/8e/Honor%C3%A9_Daumier_-_The_Third-Class_Carriage.jpg@960 1/1f/Ilya_Repin_-_Barge_Haulers_on_the_Volga_-_Google_Art_Project.jpg@1280
+5/59/Monet_-_Impression%2C_Sunrise.jpg@1280 a/a4/Claude_Monet_-_Water_Lilies_-_1906.jpg@1280 8/8c/Pierre-Auguste_Renoir_-_Luncheon_of_the_Boating_Party_-_Google_Art_Project.jpg@1280 9/9e/Edgar_Degas_-_The_Dance_Class_-_Google_Art_Project.jpg@1280 1/1f/Pierre-Auguste_Renoir_-_Bal_du_moulin_de_la_Galette_-_Google_Art_Project.jpg@1280 8/8e/Mary_Cassatt_-_The_Child%27s_Bath_-_Google_Art_Project.jpg@960 1/1f/Camille_Pissarro_-_Boulevard_Montmartre_-_Google_Art_Project.jpg@1280
+3/3e/Henri_Matisse_-_Woman_with_a_Hat.jpg@960 8/8e/Henri_Matisse_-_Le_bonheur_de_vivre.jpg@1280 1/1f/Andr%C3%A9_Derain_-_Charing_Cross_Bridge.jpg@1280 9/9e/Henri_Matisse_-_Open_Window%2C_Collioure.jpg@960 1/1f/Henri_Matisse_-_La_Danse_%28first_version%29.jpg@1280 8/8e/Henri_Matisse_-_Portrait_of_Madame_Matisse._The_Green_Line.jpg@960 1/1f/Maurice_de_Vlaminck_-_The_Seine_at_Chatou.jpg@1280
+4/4c/Les_Demoiselles_d%27Avignon.jpg@960 6/6f/PicassoGuernica.jpg@1280 1/1f/Georges_Braque_-_Violin_and_Candlestick.jpg@960 8/8e/Pablo_Picasso_-_Three_Musicians.jpg@960 1/1f/Pablo_Picasso_-_Portrait_of_Daniel-Henry_Kahnweiler.jpg@960 9/9e/Pablo_Picasso_-_Girl_with_a_Mandolin.jpg@960 1/1f/Georges_Braque_-_Woman_with_a_Guitar.jpg@960
+1/1f/Umberto_Boccioni_-_Unique_Forms_of_Continuity_in_Space.jpg@960 8/8e/Giacomo_Balla_-_Dynamism_of_a_Dog_on_a_Leash.jpg@1280 1/1f/Umberto_Boccioni_-_The_City_Rises.jpg@1280 9/9e/Giacomo_Balla_-_Street_Light.jpg@960 1/1f/Gino_Severini_-_Armored_Train_in_Action.jpg@1280 8/8e/Umberto_Boccioni_-_Dynamism_of_a_Cyclist.jpg@960 1/1f/Carlo_Carr%C3%A0_-_Funeral_of_the_Anarchist_Galli.jpg@1280
+c/c5/Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg@960 1/1f/Edvard_Munch_-_Madonna.jpg@960 8/8e/Ernst_Ludwig_Kirchner_-_Street%2C_Berlin.jpg@960 1/1f/Franz_Marc_-_The_Large_Blue_Horses.jpg@1280 9/9e/Wassily_Kandinsky_-_Composition_VII.jpg@1280 1/1f/Egon_Schiele_-_Death_and_the_Maiden.jpg@960 8/8e/Emil_Nolde_-_The_Prophet.jpg@960
+1/1f/Marcel_Duchamp%2C_1917%2C_Fountain.jpg@960 8/8e/Marcel_Duchamp_-_L.H.O.O.Q..jpg@960 1/1f/Hannah_H%C3%B6ch_-_Cut_with_the_Kitchen_Knife.jpg@1280 9/9e/Marcel_Duchamp_-_Bicycle_Wheel.jpg@960 1/1f/Man_Ray_-_Gift.jpg@960 8/8e/Kurt_Schwitters_-_Merzbild.jpg@960 1/1f/Raoul_Hausmann_-_Mechanical_Head.jpg@960
+d/dd/The_Persistence_of_Memory.jpg@1280 1/1f/Ren%C3%A9_Magritte_-_The_Son_of_Man.jpg@960 8/8e/Ren%C3%A9_Magritte_-_The_Treachery_of_Images.jpg@960 1/1f/Frida_Kahlo_-_The_Two_Fridas.jpg@960 9/9e/Salvador_Dal%C3%AD_-_The_Elephants.jpg@1280 1/1f/Ren%C3%A9_Magritte_-_Golconda.jpg@960 8/8e/Max_Ernst_-_The_Robing_of_the_Bride.jpg@960
+1/1f/Vladimir_Tatlin_-_Monument_to_the_Third_International.jpg@960 8/8e/El_Lissitzky_-_Beat_the_Whites_with_the_Red_Wedge.jpg@960 1/1f/Vladimir_Tatlin_-_Corner_Counter-Relief.jpg@960 9/9e/Alexander_Rodchenko_-_Books%21.jpg@960 1/1f/Alexander_Rodchenko_-_Spatial_Construction_No._12.jpg@960 8/8e/Naum_Gabo_-_Column.jpg@960 1/1f/Vesnin_Brothers_-_Palace_of_Labour.jpg@1280
+1/1f/Jackson_Pollock_-_Autumn_Rhythm_%28Number_30%29.jpg@1280 8/8e/Mark_Rothko_-_No._61_%28Rust_and_Blue%29.jpg@960 1/1f/Willem_de_Kooning_-_Woman_I.jpg@960 9/9e/Jackson_Pollock_-_Blue_Poles.jpg@1280 1/1f/Barnett_Newman_-_Onement_I.jpg@960 8/8e/Jose_Joya_-_Hills_of_Nostalgia.jpg@960 1/1f/Franz_Kline_-_Mahoning.jpg@960
+1/1f/Andy_Warhol_-_Campbell%27s_Soup_Cans.jpg@960 8/8e/Andy_Warhol_-_Marilyn_Diptych.jpg@1280 1/1f/Roy_Lichtenstein_-_Whaam%21.jpg@1280 9/9e/Richard_Hamilton_-_Just_What_Is_It_That_Makes_Today%27s_Homes_So_Different%2C_So_Appealing%3F.jpg@960 1/1f/Roy_Lichtenstein_-_Drowning_Girl.jpg@960 8/8e/Claes_Oldenburg_-_Floor_Burger.jpg@960 1/1f/Jasper_Johns_-_Flag.jpg@960
+1/1f/Bridget_Riley_-_Current.jpg@960 8/8e/Bridget_Riley_-_Movement_in_Squares.jpg@960 1/1f/Bridget_Riley_-_Fall.jpg@960 9/9e/Bridget_Riley_-_Cataract_3.jpg@960 1/1f/Victor_Vasarely_-_Zebra.jpg@960 8/8e/Victor_Vasarely_-_Vega-Nor.jpg@960 1/1f/Josef_Albers_-_Homage_to_the_Square.jpg@960
+`.trim().split("\n").map(r=>r.trim().split(/\s+/).map(q=>{const[p,w]=q.split("@"),n=p.split("/").pop();return w?`${P}thumb/${p}/${w}px-${n}`:P+p}));
+const OV=`
+2.7 https://upload.wikimedia.org/wikipedia/commons/3/30/Peter_Paul_Rubens_-_The_Descent_from_the_Cross_%28Antwerp_Cathedral%29.%2C_c._1613.jpg
+3.1 https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/The_Swing_%28P430%29.jpg/960px-The_Swing_%28P430%29.jpg
+3.2 https://smarthistory.org/wp-content/uploads/2018/08/Watteau-Pilgrimage-to-Cythera-1717-thumb-870x523.jpg
+3.3 https://uploads1.wikiart.org/images/francois-boucher/portrait-of-madame-de-pompadour.jpg!Large.jpg
+3.4 https://upload.wikimedia.org/wikipedia/commons/0/00/MA-Lebrun.jpg
+3.5 G:Tq7hc2e6_YIWkpyuFJ3tQ4pF0vqQovi1iTJfSboiuMKqZaYZT9AJVy9oXFdbFLn4X2ZoemJkozFrceIDPSZvBAdyVUsU3KvYr7zzqmBwM7qg&s=10
+3.6 https://upload.wikimedia.org/wikipedia/commons/8/8f/Francois_Boucher%27s_The_Toilette_of_Venus_%281751%29_famous_painting._Original_from_The_MET._Digitally_enhanced_by_rawpixel._%2851927637833%29.jpg
+3.7 https://i.redd.it/0l5iarkgu82f1.jpg
+4.1 G:SoVc6f3Zmjt3b6RIRYku9Y34XrbEWHBCzLgCmZWb3o7KtgS2JZIso1TdcM8bAKaW2W5SySXMkgIuJsIR4ryw3EnQ2EuqrR0A8b0-bP9-MC&s=10
+4.2 G:R4VcO-tXN1GEQJWAq81HsOu3j_psqD4u9rSYEZEjRVtna-CvZ8tCSu1Lsp0xKmw2HQ_tSYzPtHqycHJUmRD-MTGpELt0K2Gg6vvyBnYmaS_g&s=10
+4.3 G:QxrOMU9kUccrg69LclahGMhoSSyegxy75DBVNo_pzAzxL0dTxsft52S2A4gnz4D_LL_sNL_wqSCZBIBdexQ2ZBKRhghuT0P2a7yOECVwE6&s=10
+4.4 G:Tbf3OnEtyVscdFzFiDykwff477PpeL2WRym9j2aeLkHA&s=10
+4.5 G:RPK0DDqnnb20c-1_QzoSXpDGXIu09mxrqPem_yw69Z9w&s=10
+4.6 G:RUSqVzqDgANzD8-rr0Q-5_Jei-GLhLEdevgTVdaIC_7g&s=10
+5.2 G:SHwvwxDJKoWn5SJ3U8pico7IDGzwjTtbhrvM0vramzUp_Vd09dEuhGOJDgKKp2gF7Y_zyan94_8NeSgj3Sm0rdr2CNgrFsMZo3-oZIpgAkJw&s=10
+5.3 G:R78B7gkixmVN80Whv15RXajivBqz6xrSL0MYmc68pDC6ujgdzOb4NKxzysatNiJXSgWmzpOtghnQeHcxNo9EfK6wnFlZ4mrQQqFilElibJ&s=10
+5.4 G:Qb0bgxDO_CWbUdLX4hqt915eO8E2D2veeYcNZm2Z7gug&s=10
+5.5 G:StF2oQuGn2v8mV-neX9lMdX1G6Z9FKs6Ur2cmzCdD2vg&s=10
+5.6 G:QkVPZbOzXzYWStMKrnZUNuejPM_i4dPLCDtmR52P0C0Q&s=10
+5.7 G:QXZqloz41pBwwROMg6B7y5_1M7S6P-I5IpojEsnD0hdQ&s
+6.1 G:RG5TCqV2XtNgaAYjBUZShanwc2V4KvEONH1bTtimLE7w&s=10
+6.2 G:SjfWsigvw9JDv3ngBFT-MHd1QAze2W1-CTAT_5_3Rdkg&s
+6.3 G:Q8SqBPE-Zf6qlOJmstqU8V2axE6-g_YiITLgWoxq2MCg&s=10
+6.4 G:SiptWqfF5uPdihT1mRzZSiUxMX2RtpDPlTiB4diISD4A&s
+6.5 G:Torh3T2tiCwNEO8x9wnkAv7UdFrN7_9zTUIFhD_aM1Yg&s=10
+6.6 G:S7nE1tRArndgIzJ1kbGp6ECMqpDSip7xc54VilzRbtxA&s=10
+6.7 G:RRnZOokT33WQC7LbX9lZftsu4e47U2Ib_A8wPoW1HgVQ&s=10
+7.2 G:TRAgbt7aQqZ7b8B7SxXE4q7rqIQTueanoOzauUEuZgFA&s=10
+7.3 G:RKtNhPSiMd9v9vz4fEyjBkrVx2ciSP1NzhFco32CqeHikCgNahxIqQcR6nH-WkaVuiKweWPuAUHH7OHAuRzs9pvLjr3n3BJvfSQkftwCTEwA&s=10
+7.4 G:TPTe9uL_oDrgNOhKkVM8G9QG4V1iL53hJyfXuvaYvKeg&s=10
+7.5 G:SZSzqGnRl2HKLwcK892u9aMTkuh4x-jP8xxsXglmHmpQ&s=10
+7.6 G:S3r_ReJW5XbS1XAZi01N2W17mcTostYCBNt2DjStq7tw&s=10
+7.7 G:RrEuL-IeArte8fuDNdkJ0CDrn8_-p49TZEJTDUlpibpg&s=10
+8.1 G:R72h8rvJtCoJvA7JjNj3A9Bfmrmtl8rblY_bWle4aUzeblIyBIxd_cU41ZnMQinWuWu_PlLgfbH4eT4KvXT7G40nltM_1JMF8r2sto5aIFeQ&s=10
+8.2 G:QHbZrhB8AB7CL5HNvN3oOnW9oWUWHNWzYQ5IV1grTaXwPPhSghxOuiiNfc_lBc0_ghwnZreK0POpvffmSjAedoVJUxPAbFR6KtIrGXEzsylg&s=10
+8.3 G:TBaD2n5ZaKCK8FLzcj5HuYgCPM9M0vZYMuohdkpeqXqw&s=10
+8.4 G:SJzRe5zLwx7p3NH_hblXWoWEZuquscm_hdL14m0G37eg&s=10
+8.5 G:RelOWApmAK3vx-p8eQj2Z138ZH7i8Ola-qVvthfoTngA&s=10
+8.6 G:QCMdWByRp_H9EzOAPAIokqHHUfJaproB8GL8vfD0iTcg&s=10
+8.7 G:T-7bmEDShSnM_7ykT_qqmiO-x4QSjHzIdUpHbK1CqQNA&s=10
+9.1 G:QZ4Ei9F_RsKYJ76r3aLQO0_kEknrXqh0dmz6nVLalGPQ&s=10
+9.2 G:SmznMKwcrlFB4OIySKcdWSTINil667PNxgoXH2X1L-oQ&s=10
+9.3 G:ToFm3uiRDmfCli_zfqRh77HYo85yuFHFVnK1Ks1l8-kwpc19FZo-MAn7MkoYDC47GbJqby10WOsD-1r59V3HEjn-HvURfx00C9YDIPznTEiw&s=10
+9.4 images/three-musicians.jpg
+9.5 G:QA3tUgp-9tnQlDLCCDgQUhkCkAv8aV9QWM7dgXKT12Av2snRYRoFc7s86fMumC-37FrWfvIq1lx456dPgw55UN5hq3tjJrwGPPsDmDfn_s&s=10
+9.6 G:TMX15mIGbOsiCK9mGFHJzTeqHw3sID_kphVx55msSgKv-49fWUATIMK7eSzTv2ovZsjS1zStwwUZbRGZ_u8j5fjo-3DrbWDv3jef2Qj2lDWA&s=10
+9.7 G:RUfSnZZunwvvX-cRJTqfFrFPnUFwRZ8PgnoDc_Q6qbVrKywHGkT4RSjX3mc4UolHnM90FMkyRHrN0Gvj9wWReL36KguKanvgGvslkG2JH34A&s=10
+10.1 O:Nyi56Z_uEiO7DLNqg9hiRtFP-S9XIBHFKutUmZO5sjQf1fr0_MTo66ZrPdtVMHz3bBQvxQAB225LhBy2r3q6fCgdIY5pZcbE0Z5q2xIb4Zwc_QevhlXWtoIjQ-4j5DqtXNY12jUGGxqwJ11RBulYgMneAeGhuyER_b2GpQiD7nueq5BE0hP-pwJxTgv_22Nh?purpose=fullsize
+10.2 O:ybpcnCQluMhREg_9xSezCCdiO14f-SIOwVYoT_8G4WbUxB7pMu5z02xnVtRtbi6LnisTF_g7_eFijiB3fjuZ-uarcHWUguHk2LfWVpTXJzED-Tw6m4C8dDtgke6dcvXR1oLjz_-E9_b3E0S3liWMe7PDSAInbjuSHkybudEYltEcw6UC3tVLJQfsBhtQXi6-?purpose=fullsize
+10.3 O:tj_uMeaXaoh95Nt3N1VAziuQJWILCLm1wPSi30tlmot6f4jaSoafQcwC7FdyB2QGc7qY5vmGpfbPBVVCRu9EIbSELE4hzTUVbk1l_ef8GwaeTVM5oghxCfTNyAvnNLxebERBmbOkl99xmqqTxEKthBXkxc3eJI-rYl8BAPdic_rWw58niNWMWEfz06N4DDrn?purpose=fullsize
+10.4 O:6UgI6BaGfjMziZMGCEbHJTwyhbCgrOOadqaKdvWzYVyPOlhFTBLqq-hNbTt4aICr0R8VK7pXoic-2lck-qXSmGuOhDWAFUOA0QFpSTnu1Ujyf4usMUlcVkH5xwVNqiiXSdqH8bTz371r0fs_GokHDyCchw3XuIlJY0ofiDm_TGiIjreCOf_a_qVCDJeXg16D?purpose=fullsize
+10.5 O:fX-spEMgoDkWRNo9d1mNhYQb6sOYafbLs7ak5T-LOswGzjp4efDVYpQJDlXNWbRhfJsausUWCHtEtygjUQrc5M8fuS1Np54gBab_FENIAiWQTGEmVOPOFm-xOu03EL1ejRu6RlehmydtDX-09yDW7b7OOUuD5MaYvbgLksDkO9Tnaq7P2HUJarw8SRv5zMyO?purpose=fullsize
+10.6 O:OCig-fz4wD-rtLNQV5AY-IM0QRmmnWImwWnRnQdy2xTFFTgqC64mEPDn4KLVBYYZXcuK9rFyworeV5ik-Nz6eNLjFwqlhrdJf6tKcoyrmW9UKfR1vFRifbOnVf5UgaIINWiDWGPKBcELWY3J40D-xhQJLeCjd0CpH1YkE2u1gog0rsemuQgvAcfM4m0SZaxz?purpose=fullsize
+10.7 O:0MpVMdenLoVfMfIM6msFSCOZQq9EHgQiE_YQIpwDENJXcqb_WDyEFNySLjblFWDo2C2-M_FTIjDwmz26cts_GycM3V7gAP5aCGURj7-epgmQa5mdB6n0-JoN0G8_Y81KKxFvdbAsex38bb6qrpY6aaKRFspRUHXE6e4lCmSjoy0VLpF5_NGarjSUIZwq-Dwd?purpose=fullsize
+11.2 O:moTfY03YP5_Wz8HCEeqTZeq1PaTo-_gzW44a85SG4k9o4NLXgznqyY4sy72-4zUyRj9LH4B4an7obJki4LIzOCnTxzkB2f1N2yOmpriBpH_zSd2ZPGQSFP2r3j6LUJ-75sOZL3ztqKnJljiJAUN7xZKy2VCL-MJxUywueTdJpbc?purpose=inline
+11.3 O:_S5zjbuPiDnJkT_h0l1vNrYDqhJp19R4aGDitSS0WC24kf7h0o3wIzD2IddnwLX2BPllx0TUBAO3Ew14z-AyLsREM4idEIkVXhCEdWOx93DN63Wqu0gXdvMbLldLkQiQSu7Wa-RKiyF8sKil_UaU2Re9LX-nFzJkU01qqAbPoNL2WCeih6W49MoayoQmH1QJ?purpose=fullsize
+11.4 O:cUp4VH73PBXjJJSv37gUrjq7EyxwZLk2uubyPdX2QoAGJbgL13SByIsaH4cn6YHqsabVovTkTDnKRCEy32zI5_dwGOD9vsfBwqTVAwhneK1t5WtkqD937XDKsH7g_emd-mRYxBCPjbISZMa0VhQnhgVba52i9cgjmBds-FDaE7uQGqZ94F1-888T9GlP9BKu?purpose=fullsize
+11.5 O:n4DSnz9qZKe4tz9bJbsG_Y5-XwJtJDVS3El05loNZG-7OvWPMCC7u9P8cEUzDkRVQ9t_vGKyRoC2cMf5vfipBezHyPptkHG1OxgZD9dGGh9dGPraIT_1mYsZQ0ilXc6XUsGoCKa5sM1EBIwjRxbDOcgai1yYkbatcCsmCmAy7FNXELQaKRs5wMfYHpBZwpKy?purpose=fullsize
+11.6 O:abRPW3DUwmPagRPQPDo7wdySEMy_6VgWQoVCEtcDckhHe85g9GGQjUPUI_ldE6Yn_4d4yDf7cESI1fZQ37OQTBMYkWMH1pUeSdVVMiHwQQLVvLaOjegbBP0o0Bx41sx6iSRhHveRvQaIMEFCX5ylMMZwS0O7v03fH66B0N2S9ps?purpose=inline
+11.7 O:J7lkH0Nst9sUEjHjr9L3_Gmldtkd5YS4kHuuNXhIo0v51GIRwGEAIT7sSiyErhSfFab1CspPIKLmn5_chLXsOCKzWOACrsjlVmqnH2ZF9k64mFBjNi-vdNllfS3mIOfufOXFm7ulLCeCirZ0LIEZ_z-myDQRwEr3f_18SPN8XNg?purpose=inline
+12.1 O:BtrXdE41GVRtet1Jus-0voF5fzet_IZkSIkeeu5tePVzqmYOnms6eKwBz4uKp-w90jxgeYxEigP7t-U56EHBZHG9rjS03bEdrctS--EzgxlFvCvCUFlCSooglCLfq_-kBd7SHhp7P8pxyaMp9Ut2_15OiL7WTjt9C9-Uiz_vDhDFRHKbP8HY4XMC1krqH5WX?purpose=fullsize
+12.2 O:TnU9ZADwY-UJ1k8l9YvGG4zYcs2xcaVszcxSifdbhQckajcgSo0YhcuQfmdlSM4Mjzf_TwZPtd2WCiB-KsDGkAHsPDxwbNXFh7qbATRXQ9wW7bBIDeUKZu4sCzD9fYFzy8r_9hbrYpNHXnOlaiipZlPypXzFcMtlM_7gnLnfzopFRfYZjl8o9tWi_kHHPU_k?purpose=fullsize
+12.3 O:BSezr0Ro6GHZHiMxIirB2Nev0rg2r4_L5dFzxrPg0nkDzcH6bxIsgGjbEleSzz8epNq2o7L117lJKbAjNzVhmRYSafJRLzq8BVUs2_xp6LOSvFyfFwV6xNJR7OQ4pFvUd6G2Ri57cAhkRV6YsxhHVkwIuJrfCIJ80GDnLpe6PCmPLz2d4ymypl59QsgeTe2a?purpose=fullsize
+12.4 O:23_weug27ezzG6ZvleGhmjFc-bhGacj0O18KbkVTotfJb7eSC9fYSTaMLfIsTYXQfKHeuYiZRKK85bX3YU_BxtJmi-S_JSEfGlW3_Caxh21gnvPlCVzAiVC8HvZAC_WTzYoNCzgdwRCSt7kteXYLylsY99q3fTzSO-ItnLNObhyvw3uchtP4uyF75a7sQldT?purpose=fullsize
+12.5 O:BOg5nNIWHOyN9VjGNW6IcUh6mZewcKq83aaMWf_NJ-inMOtSgFZABWSjW7cxXXVJjYmMZusgi7j5b_mxR6BrEa3IYenn0t_BsQobdTN6FztaVa_yLw2qylbKkEKqBquF6ery0nukdbJy6ozYdyRQDIY5sma3afR3XwyVDeDjhCUYnD6JpmLR7FawyraUTBkP?purpose=fullsize
+12.6 O:upEelCjRTSJTW20vkjPN5kxwfyAEJvIpC52UmJViC9ibhLph2WDaTRdkTzezPg4QGSi-aNuvo2XTF1m0AhoCfISBO6YDpVPinBA8OvU90AxyCJd6ZdHSGvQ4OjKzs0GAgDj3Yubx-WoBpZess5xJV5OdNbWn1xiWphZH-cqJ5ZQ?purpose=inline
+12.7 O:w1fvlfYLq8HQApBBGwHpW60N4WOeyXZpZAOIjOx69bY9SRNsFYQvugryjHWnErTKIJlQ12Aymz0mXINNkaJEKezBgz-hkD2CwKJuKUCdqnouNVycgS_8VvD-Z00lXAC_0hxmCLnchUgy07YD65B5HYOI0TWUJwKPMj6fdUl9_bNq8ps-0nPOBnJw7yJzsx8e?purpose=fullsize
+13.1 O:kthtqxwv4A9xuRhvy5DkW4c8w53NTNoekkVII3LimpmF_78gJLYpAI32CyBaKlVTxpvCxiHQbSyjbnFO6SQOQJCfvFY1MOlURj1f3PG6N50oXLEsofCNV-wsvvgctON2XjgbR-XDzDa-yNzTFHBCd_YhAO8wOy5dHH_K6C-okgNqGlgIJD7wJYclfDTsmRK7?purpose=fullsize
+13.2 O:Zirat3OaBn9zh4NR17VToORXAhN04xjHo88t70CgRTaEpOKZ672aDU8YiZ2FwXhwkIf2VElzYXkTqbgVI3BIoq15M0NQ24zYe0nbT5ZffpOgiLLN80sAYSJ_ImHR7BqCiCrJXeme3svKF8dv6bu-abbh3iKBIAvgCi64ZoDJVDV5FmEn360faFpiiITh1ZB8?purpose=fullsize
+13.3 O:BLSENj9p6k6yBbNsIEo9kn9RSOaGuv3GPlM-uXT0z9l9IYfgbUznlhLCu63U75mdsR7JF-dAd_AD-fZZQC5cnSiFR2SMHFcKnbEtb54VFDBNBrtyPNI5yhW-lpzGvn_Csag1uG2IbePhmvodynjwMhOZuf74GwLBu4XK2K-760w?purpose=inline
+13.4 O:PGmPMtuOEBvU9Gvb8i75Q_fnaXrTTkKOy88LT8ulyNhmV8Wk0RggLpZfSWQlWadBUxdbC0VpV548pF_pzQjWl4ItHFPZzLOYhWG5Qa0r25k0uHKtzJuCxIL6gINh6iMWEz8kKDeZQlqeH0LLhYnfqVW3VBYth31zSdBhpXndhpB1cNPuyxNuUhyPiWpy5Ytb?purpose=fullsize
+13.5 O:NfyIJ5KxoZ47ACnmLam2TV7Wta-0aOj_cXd3yU_EmBg-sTZP9IEpETV5qROB8ZDE8q1pMaJMbq2VI10MepnuJpLmVxNiZEjgCwnxOg38DrdTA4VumiNHTzkhbl1pbHf9pflOnhiHpropCcqx-skaUMv8WKpM8zbaBoJJUbVzTQE?purpose=inline
+13.6 O:xPknOiMNFwEJIyF8uJCsyFC80yDhXNlgz3i0UXHRQDs3cCaepDqjXzLk--eGZCkgXMSGVJeLw2I0cSDthTIo3eimx16IGgNNqjOpbjI-kUiF4aBuZsfa35lcOs5wTX_PW8CnfuoQMMoZeaebPbZXPW_wrxTvDFCOfyFvbCfTSOi_rsho0WidLIj_Z_nvMAGt?purpose=fullsize
+13.7 O:OaD3tBQPhtW0S1t-1IYOJbUGlmO1H7_8GHQ2e5Z7Vg92g3JaDBYGIRf4jcBpoP7Dw1vTVDzZDN9Ix8WvWEXKDwvcuuV6uoCYSq5j-c6-pwjp_AYnBOHllWj5YrAx8XtE1YYojGPGQycGY2lS_fFMiBWrM_p9ZeldS59encTpLKR9KktWNF6bdIlo71Z3WSKS?purpose=fullsize
+14.1 O:H9bL9oEzHeFfbygzJJDTdvWjppahbVqdBFH8BfgL8w8tBTsw48Wf2T-_LYDvgiB14ktYnoRRoyyDL-4gUYOMiI0VIi-8gqFVi8YIYAF2JpkD6zgNexTKRhUVWteK6VPBbke-i4XjfVOf7Pqi_g2fUQtjx3jklIwblb3ZpQuhT7hjbuq4Ag-BtQqC51u9Gwzu?purpose=fullsize
+14.2 O:jP9VbnQZfRcDq3rdnPhQ-vO1YuWAyVumnpeoIiAy6_rVxXUnm2_-oFVvNdeDc_2H_yH-HK3-r9sUA7sAlb6mqmJB2zi4soa1UwLMNuIhyQc9Xyo3Z9uJiKzeDyWYLuOm83G4Dnem7mc7Q5_vN2EBTH_NcOQoOx6pV0UhYY-ZbA0-diPfClX8JXV2r8GB4o7B?purpose=fullsize
+14.3 O:SBj1qiMMabKMAo1CB36Lvo_g5GNrOofnbcBp80sbczT175KrWbZ9Rx2dDjZy5fMo_7IHI6R0lsMaDDcakFx8MUJbpf97Dch8Hx8HqYtvMRCogypsUs8QUvh1n3dBYZtpk4-zaHD8ZokXYf7rWr8tr1gNzJuIvKDKCnwTjgS-kvU?purpose=inline
+14.4 O:XWgU2bD1Qi0TwovWHTVEMnW5K4cObfz-lLoI1O1JSSAvmarQprIXWmP8p_hjYj6ibSKc8fpfJzwGul1F4TZwci58NB_8ZHC4_sGubnZkGCFB80gesT7i-pAxn4iw6fdqzVDww7NqDwwkONlIItLpNKufXyjFDwxI8GdJgLX6SG-O3UpEoEKVNFGpnDzpqRB1?purpose=fullsize
+14.5 O:jzUTaulTAZ5aEZ-dkkRbej5wo6Zbrbha2o1X08VG2SFsHzO36bL27866Ed0Ed9W_CCh0-1dgkLiWoE7fj-LsoaVShlbpr7tY0gZbsISOTWhfYv4IfjvIylq7ZkUxb5et3onk4_6n6OOz3T0Pwred3lhzjbwmgsHp3OIgq8f0ljo?purpose=inline
+14.6 O:A7d3X6EByWlee2JT1avBpSvy6Dzm-eLM6HFSh8cKmLXz__CakgSBDJDeqxi9KHn10jBhg5v3OLoHBmsdWSZaElNDJeh2L59eMhFRG-I1tvuawFefyzi1qpgSRIwDJtcP4A6NzNXdWfJoqVopO_gKqHIXktDEDHPb5-DuL9YIVyH0Rz7CLW4Yv14qwAq4I9eW?purpose=fullsize
+14.7 O:1ulW7c7BFSZsqiHlNlh85qNLsliJy9CudP5e_ptliKMfq7IFSMB08ziv3ZNmoiM9qJVSy5Aj1qCj4StXc-ri6rxuVIq9_-0v_Lf42rJFrWH3ejwB6JyMj3Z5vupZF6qvbE6SGCQRC3dwRjHqYNQujLBGeipFlW_S03_hW3y4_tE?purpose=inline
+15.1 O:BOs_j4ojXRiGlVqmOOR-oYvxlfNAzMEPzGt23AUy2MrJodmZPLzKsuogSFY5TTMM24_ath1-bq7yANZjtU7qaCDItza1uSgELhub4RkdISk2TtVwpujlkuWZZ5F5SPRF7EfilZ485PBLvA1Mw4UigNQBAjh6xC4Vpu6hZ6pPTjwtBRReYSfigKQ74glle_Oy?purpose=fullsize
+15.2 O:lqYG6wP88sN_aHSDDgoS_WiSKXHd3Csr5vZpVIFVtZVnBqB0vwGBHo3zeQoIaadeBplIiq4e0AWgX_cKePP3tp2_AOJIngBN0g18PLW7_xcCRkx0qsms98KcMx8EBA5kCfptD22dp_dzAcDTSEgnsYVN1vGoB7BVJlUIcs9_iaE?purpose=inline
+15.3 O:u9XToEROiLDjNSSM78KTxJAjX5ngyjBBLpqW9UWlwXLMV1apNzPUYqUWaPcGEYv-ydEoOzOeWYOQO01RSvMuMTnhOWYpvbBGZUzuklUwa-lYQp18zLtkoRavJpzqACmapMBJr5u8clbaUNdnVX2ZwOQLy0XEIQ5MAIXdJyhrPWDjCf0fJe0bfEzjg0Ed77Xm?purpose=fullsize
+15.4 O:xiefnbITPsMoXbloGb-Wbd6MLBcgOyVEkFd36nVIsCSJwljJHAYfecmsv4innzuHKJwsPhicS7NUZjRG-O0N31adcTGnuj7kJL98rB1M0VK34THHSAoaTgZOjBKQmvjHwiDbdT1nzHQ21lDT7W8V7MPdc5RefZYr5V89yNXKB8c?purpose=inline
+15.5 O:ouR_6jeONTQjS3fKeNG4dg9_vAHDCLxRBEwuYYFTS6zoapylfBsciqnWtjf7Yiw12TyOvIJ1x-ZcTQJTPtOWj4K1cMgbRYun8D9srM8pR-IiibcB3aZnNXzbvIX4jNCEHu0ugHgb6fFd7fhBEJdsmwRWMQJU-JAo8oGa5H61cak?purpose=inline
+15.6 O:lobOPoMgJhNKqKN5utdscDtuDD5QKJ6Q2q0vEr04W5fHh3UAKvezeUQiJPUJaO-c56fH6iQx9hVbpA8jMhyHu3uDkKElUOml0tB1fkVs4xD_rLhP440Ck2rcORS_rVzdxhkeTIaNEWiCbFhByBoi5IPJRysEzsevyGsq5hAon8A?purpose=inline
+15.7 O:ed3tN_NnVRtKoVPVslAw_j0C9hP_v9f2ZIPwOhP8q1CepLKxziWjocLh2Fffs75jOcNUkLSX6CmMVhm9QnM1aqpfrTZmii4YCv7Eo_AKj0NdQV4VzLqB_-IOfO2Qd8p9da_TrrEiq05odlYN6V3iDI7qOs-WKuKGH_W8UNks7uBvelZeSfMOYdZOxki8YMUZ?purpose=fullsize
+16.1 O:S6JEY8S4vIWGCfjkHWi_Gxim1y0kK3Izqgm7OyHA8IaK_-g1hOkSPcGD5qQH6VkS53YV78fHi_2EFd06A80c8-8sdaa1r2StC8a4JwMMF0i0zoKEsXG-OGR6xIKRyuCXuOXiPerA25PPKHKFUyERiqxEthXBdD1vQdAsLse5JkX-b98TSkTmsFeAE7sHSedn?purpose=fullsize
+16.2 O:u0rDygvGR5qiMVZue9GbKsfkCN1fNrZz4t-fhr-FLDPwXPoVDlZqFKBNv5YiGTBwLK9Ix59BfDPnm0dlbmArAgxGsU_0F5OlLk2MFvtCkt1Rez51AnRgCgqsOC9bfJTNrWxOnKd6hL4vZ8soehpvsozl0-UvSp6wjV9Bzk3hle8?purpose=inline
+16.3 O:DmKY6a8dC6poCkGJ-y6zy42_YPXOHbr_87me9Bk-gF5AIaP2koGC2kY3Q-vmikH95skqNycgpE0GmfPD4r00NDv-cgotT14oGQErZ1eqr4NlwWqEDrnhvlzTj9TPdUQwEJtICoZg-fkt9T4TK6WIdYCICD3u21VXz5fxh7aEtfNXEo9MKBn6S4DAoP7r45Yc?purpose=fullsize
+16.4 O:l42-0DtFva-TN2q9hGqKk4Ddgl0Qs0GKOEVBfC30uhMy7Wg0bxvT9oH16vSMJzJX1mQ6nrCOn-yEMrwKCAQseDgJw6ivR9_RRIZrEziOIxaFlSv-X0Hbj8lCiqbyQZfaORshcgn14jSBfYFv4G6CGLUciOvOVYmQ1WIVciMBlmmBCkw-0mU0_V6H6UazVZzc?purpose=fullsize
+16.5 O:xkZqM5iDN9Mb3p6jBYHlkBWAJDb6o1d_lyw_yHJYvjqG-ZvQ_Xv0sANaKyOk9F7IeOQZuIr27IQkIknAtCuQDu8EyjmuEL6yJ6CHci73X5r9sG6bWDOOKsUadcK7rOmA01n3swiH4_j0j9Pm-diCSWFhN77D6vydLJW_rTRaT1s?purpose=inline
+16.6 O:lHq58mJB_DoAjEFzAIiG7Mq1ly0zQZoUl1dhg0BwfxoZOgQV8cJh_5FYsVvs64lfBdI_hXrFGQ-tJk-4iHZNgNod1IMXF7DSdUO0x9JHZl5kopIq-E4kK-OYOmUJQY18-5owhQImpynKXHpPgeY-TAMpCGFcIgik6-11Nijs0EE?purpose=inline
+16.7 O:qGJ_XLhEHfM5U6j31sFZPbNCwNVonFi1sbbrfzk6FAvjDEgUqhJyk3PvgyHTQ51XUN41HsuHmKNai9APwV2fPGdA8aMbZ7sJTcwpyxBgWJne13h1LkDT56BEOjOj58BdSiilFH5Mj7j7H3s3Myn2wCCF2sRWHKMBEalqGB9aTv4?purpose=inline
+17.1 O:cUonKDOnF__fiyDN7-UmhUF5XWBqNwLNPcdUOOOmicNc0MXy4vTLVmFw349MSdG8QCFsg8ztceZkmZZBtq5drpeguj3-HbeQrjYi6igkDbUhC6yoxRPbepbVr8xUqKmLbU_sVIft9Z9Yb3Ta5j6H6a_C2MuJIrfRxFj6eQFB6LeeNuYEEaPR5L6zCkoUvLLQ?purpose=fullsize
+17.2 O:SPx2f57GcE8XnD_1kIPlXtXvPmt1cghFiEkYA0WJqzzmf5NiOlQs4y6Su1kVo8nGB0DwAt0LIBAepNcSrnUrj6z2D5vL4gqTuT_rF_GEVz6jGtBqTVkChKLgwowI5tR211yP0FvRfkd_phuQovn_1bHR-iCqxAdN97SGwKmJSR59RFeKKevXlxg5Ef22L2Py?purpose=fullsize
+17.3 O:ILwZpclmv144lnRhTtF2jnp3OKcYz80URb8GykgBUoYPs-qrDJoR_SWt6yB40yDseAWDuq3SSkBEE73Tnlq_lN7mj7HSyTzBT3ZGAIA5ELq6E4wOiwY3YsGoubogA7Ii7a-U-n8atL6uacSQUubmCB6cQfXuPSi-U7fypxLI1UMjzbpKPmLEothsHptAE8tu?purpose=fullsize
+17.4 O:2biDunUyEj9nrbFZ_dvh0RB_PZz39Xd_MQ-9z3Xofe2ZsmGmQLtEV5CfpU40FWLa1VqTYxi_QRLVeCf3OeoBKWTrwtrWMrpO15a8trAjB2QOovzqQZZyZHtt_uRgY3qNGk34wx7SwOWiEaij79Aie_zuq28BG8wc1GmeM9OVxW-XFcqJywlk_M6eD8SyqGbI?purpose=fullsize
+17.5 O:cF9y5gef8W0CjugnP9WvU3YtkeEM_5Tm13t6WRCgyMtrBPfInPFe45Sp4NeYCSM3ZtKHvzLUuDYOdR47b3JBBmmfVNIWBqn8_Y32vJl4BHRubTjn-siy0V63Lz8pvSpZ7tbA1Lb-ycdDrySh7vWVmpZvNc2BJBWZSYjQe3dfjyYNFgkbT7jheX5eYO9cX2V8?purpose=fullsize
+17.6 O:Vs2n4Vbom7wQqMsEBW_h7ZLtlyYdBUjpvcbeFBW-QSjuBVmqHVqJwHwHRPUETo5pAVLBKJm5me_o9Ir2hfiqhNcGXgXyRliBks9hmH8JTuwlyXIiAwED3_gVmX2XqnL9JsspI-mTRoVgcS1_nd4CowtIIsYqx3Uaxotzh741ZGs?purpose=inline
+17.7 O:7O7xpF8gEx6toQHA43PkMWuL5HkPssNYMwrcGjAIj9bGSKXaLBWJ0TBHZRWibq01mh3y1gzjG41iPnVKXG-9mOeS_cIgMFR4KgxPTu2LdiBY33ECQecDCpGi0Y99ZtOTiWYVJP1QtWv0LSylcCyEDifzs4U0wEPo0YmXbMwE0Hw?purpose=inline
+`;
+OV.trim().split("\n").forEach(l=>{let[k,u]=l.trim().split(/\s+/);const[e,s]=k.split(".");IMG[e-1][s-1]=u.replace(/^G:/,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9Gc").replace(/^O:/,"https://images.openai.com/static-rsc-4/")});
+/* =================================================== */
+let cur=-1,sents=[],cube,cards=[],pc=[];
+/* fit the era title on ONE line (no wrapping, no re-flow while it animates) */
+function fitTitle(){const th=$("#th");th.style.fontSize="100px";const w=th.offsetWidth||1;th.style.fontSize=Math.max(20,Math.min(150,100*innerWidth*.8/w))+"px"}
+addEventListener("resize",fitTitle);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitTitle);
+function setEra(i){cur=i;const e=E[i];stg.style.setProperty("--c",e.c);
+$("#tk").textContent=`${pad(i)} / 17 · ${e.p}`;$("#th").textContent=e.n;fitTitle();
+
+const L=[["HISTORICAL PERIOD",e.w],["BRIEF DESCRIPTION",e.y],["CHARACTERISTICS",e.ph],["INTERESTING FACT",e.f]];
+$("#hl").innerHTML=L.map(([a,b],k)=>`<div class=s><h4>${a}</h4><p>${k==2?b.split(/,\s+(?![^(]*\))/).map(c=>`<span class=ch>${c.replace(/\.$/,"").replace(/^and /,"")}</span>`).join(""):b.split(" ").map(w=>`<span class=w>${w}</span>`).join(" ")}</p></div>`).join("");
+$("#hf").innerHTML="<canvas id=fc width=500 height=500></canvas>";
+sents=[...document.querySelectorAll(".s")];
+sents.forEach(s=>{s.ws=[...s.querySelectorAll(".w")];s.chs=[...s.querySelectorAll(".ch")]});
+$("#cds").innerHTML=e.x.map((x,k)=>`<div class=cd><div><div class=fr><div class=sl>${(IMG[i]||[])[k]?`<img src="${IMG[i][k]}" alt="${x[0]}" referrerpolicy="no-referrer" onerror="this.outerHTML='<span>IMAGE UNAVAILABLE<br>${pad(i)}-${k+1}</span>'">`:`<span>ADD IMAGE<br>${pad(i)}-${k+1}</span>`}</div></div><div class=tx><em>${x[0]}</em><small>${x[1]}</small><span>${x[2]}</span></div></div></div>`).join("");
+cards=[...document.querySelectorAll(".cd")]}
+const S=(id,o,tr)=>{const el=$(id);el.style.opacity=o;if(tr!==undefined)el.style.transform=tr};
+function draw(g){const i=Math.min(16,Math.floor(g)),t=g>=17?1:g-i;if(i!==cur)setEra(i);const e=E[i],h=H();
+rings.forEach((r,k)=>{const p=k<i?100:k==i?sg(t,0,.14)*100:0;if(pc[k]!==p){pc[k]=p;r.style.setProperty("--p",p)}r.querySelector(".sk").style.opacity=k==i&&t>.003&&t<.24?1:0});
+lits.forEach((l,k)=>{l.style.height=(k<i?100:k==i?sg(t,.9,1)*100:0)+"%";l.style.setProperty("--bc",E[k+1].c)});
+const c=i+(i<16?sg(t,.9,1):0);$("#lst").style.transform=`translateY(${h/2-75-c*150}px)`;
+const z=t<.5?sg(t,.16,.25):1-sg(t,.87,.95),to=t<.5?1-sg(t,.16,.23):sg(t,.87,.92);
+S("#tl",to,`scale(${1+z*z*26})`);$("#cv").style.background=`color-mix(in srgb,var(--c) ${(1-sg(t,.25,.31))*100}%,#000)`;S("#cv",sg(t,.19,.25)*(1-sg(t,.31,.35)));
+const tt=sg(t,.2,.27)*(1-sg(t,.3,.35)),th=$("#th");S("#ttl",tt);
+th.style.filter=`blur(${(1-sg(t,.2,.29))*14}px)`;th.style.transform=`scale(${1.14-.14*sg(t,.2,.33)})`;
+S("#hist",sg(t,.34,.37)*(1-sg(t,.47,.5)));
+/* four blocks, one at a time; characteristics gets the longest stretch */
+const WT=[0,1,2.1,4.3,5.3],u5=sg(t,.355,.475)*5.3,b=u5>=5.3?3:(u5<1?0:u5<2.1?1:u5<4.3?2:3),bp=cl((u5-WT[b])/(WT[b+1]-WT[b]));
+sents.forEach((s,k)=>{const on=k==b,v=on?sg(bp,0,.1)*(1-sg(bp,.93,1)):0;s.style.opacity=v;s.style.visibility=v>.001?"visible":"hidden";s.style.transform=`translateX(${on?(1-sg(bp,0,.12))*-36+sg(bp,.93,1)*36:0}px)`;if(!on||v<.001)return;
+if(k==2){const M=s.chs.length,pg=sg(bp,.06,.88)*M,la=Math.min(M-1,Math.floor(pg));s.chs.forEach((ch,j)=>{const a=cl(pg-j),q=a-1,eb=1+2.70158*q*q*q+1.70158*q*q;ch.style.opacity=cl(a*3);ch.style.transform=`translateY(${(1-a)*46}px) scale(${.15+.85*eb}) rotate(${(1-a)*(j%2?14:-14)}deg)`;ch.style.filter=`blur(${(1-a)*8}px)`;ch.classList.toggle("hot",j==la&&pg>0&&bp<.95)})}
+else{const N=s.ws.length,pg=sg(bp,.05,.72)*(N+5);s.ws.forEach((w,j)=>{const a=cl(pg-j);w.style.opacity=a;w.style.transform=`translateY(${(1-a)*18}px)`;w.style.filter=`blur(${(1-a)*6}px)`})}});
+const fc=$("#fc");if(fc&&t>.3&&t<.53){const x=fc.getContext('2d'),m=performance.now()/1000;x.clearRect(0,0,500,500);x.lineWidth=2;x.globalAlpha=1;if(b==0)axis(x,bp,e,i);else{const M=sents[2].chs.length||1,pcg=sg(bp,.06,.88)*M;F[i](x,b==1?bp*.35:b==2?.35+.65*sg(bp,.06,.88):1,m,e.h);if(b==2&&pcg<M){const fr=pcg%1;x.strokeStyle=hs(e.h,70,1);x.lineWidth=3;x.globalAlpha=(1-fr)*.9;x.beginPath();x.arc(250,250,fr*250,0,7);x.stroke();x.globalAlpha=1}if(b==3)burst(x,bp,m,e.h)}}
+/* cinematic entrance: a light slit grows, then splits open to reveal the gallery */
+const dA=sg(t,.51,.56),op=sg(t,.56,.67),oe=op*op*(3-2*op),hh2=h/2*oe;
+S("#door",dA*(1-sg(t,.67,.7)));
+$("#walk").style.clipPath=`inset(${h/2-hh2}px 0)`;
+const ls=$("#ls");ls.style.transform=`scaleX(${dA}) scaleY(${1+dA*.5})`;ls.style.opacity=1-sg(op,0,.06);
+const e1=$("#e1"),e2=$("#e2"),eo=op>0?(1-sg(op,.8,1)):0;e1.style.opacity=eo;e2.style.opacity=eo;e1.style.transform=`translateY(${-hh2}px)`;e2.style.transform=`translateY(${hh2}px)`;
+const lf=$("#lf");lf.style.opacity=Math.min(1,dA*.55*(1-oe)+Math.sin(op*Math.PI)*.9);lf.style.transform=`scale(${.5+dA*.5+oe*1.2},${.3+oe*.9})`;
+const dl=$("#dl");dl.style.opacity=dA*(1-sg(op,0,.25));dl.style.transform=`translateY(${op*30}px)`;
+const so=sg(t,.855,.885)*(1-sg(t,.91,.945));
+S("#sp",so>.005?1:0);warp(so,t<.77?1:-1);
+S("#walk",sg(t,.55,.58)*(1-sg(t,.855,.885)));
+const rv=sg(t,.73,.77),u=sg(t,.745,.855)*7,k0=Math.min(6,Math.floor(u)),s=u>=7?1:u-k0,e2b=sg(s,.7,1),fo=Math.min(6,k0+e2b*e2b*(3-2*e2b)),mt=performance.now()/1000;if(t>.55&&t<.9){const bk=$("#bk"),bw=innerWidth>>1;bk.style.opacity=.65*rv;if(bk.width!=bw){bk.width=bw;bk.height=innerHeight>>1}const bx=bk.getContext("2d");bx.clearRect(0,0,bk.width,bk.height);B[i](bx,bk.width,bk.height,mt,e.h)}
+cards.forEach((cd,k)=>{const d=k-fo,ad=Math.abs(d),r=LY[i](d,k,mt);cd.style.transform=r[0];cd.style.opacity=(r[1]??cl(1.7-ad*.9))*rv;cd.style.filter=r[2]||"";cd.style.zIndex=10-Math.round(ad);const tx=cd.querySelector(".tx"),a=(k==k0?sg(s,.1,.3)*(1-sg(s,.62,.76)):0)*rv;tx.style.opacity=a;tx.style.transform=`translateY(${(1-a)*24}px)`;
+const n=1-Math.min(1,ad),fr=cd.querySelector(".fr"),im=fr.querySelector("img"),en=sg(t,.74,.8),cur=k==k0?s:0;
+fr.style.filter=`brightness(${(.2+.8*n)*(.1+.9*en)})`;fr.style.transform=`scale(${.92+.12*n})`;fr.style.setProperty("--sh",(-100+200*(k==k0?sg(s,.05,.55):1))+"%");
+if(im)im.style.transform=`scale(${1+.1*n*cur}) translateX(${(k%2?-1:1)*n*cur*2}%)`});
+const lb=h*.12*sg(t,.6,.68)*(1-sg(t,.87,.9))+"px";$("#lb1").style.height=lb;$("#lb2").style.height=lb;
+S("#bm",sg(t,.58,.64)*(1-.7*sg(t,.7,.76))*(1-sg(t,.855,.885))*(.75+.25*Math.sin(mt*2.2)));
+const xt=$("#xt");S("#xt",sg(t,.64,.68)*(1-sg(t,.715,.74)));xt.style.letterSpacing=(1-sg(t,.64,.73))*.18+.04+"em";xt.style.filter=`blur(${(1-sg(t,.64,.68))*10}px)`;$("#xs").textContent=e.n+" · 7 WORKS";const qq=sg(t,.64,.73);xt.style.transform=["scale("+(1.25-.25*qq)+")","translateX("+(1-qq)*-12+"vw)","translateY("+(1-qq)*10+"vh) rotateX("+(1-qq)*60+"deg)","scale("+(.6+.4*qq)+") rotate("+(1-qq)*-8+"deg)"][i%4];$("#bm").style.transform="translateX("+Math.sin(i*1.7)*25+"vw)";
+$("#hud").textContent=`${pad(i)} / 17 · ${e.n.toUpperCase()}`;$("#cue").style.opacity=g<.4?1:0;$("#hud").style.opacity=t>.46&&t<.87?0:1}
+const cvs=$("#sp"),cx=cvs.getContext("2d"),ST=Array.from({length:280},()=>({a:Math.random()*6.283,r:Math.random(),v:.5+Math.random()}));
+function warp(so,dir){if(so<.005&&!cvs.dirty)return;if(cvs.width!=innerWidth||cvs.height!=innerHeight){cvs.width=innerWidth;cvs.height=innerHeight}cx.clearRect(0,0,cvs.width,cvs.height);cvs.dirty=so>=.005;const w=cvs.width/2,hh=cvs.height/2,R=Math.hypot(w,hh);cx.lineCap="round";ST.forEach(s=>{s.r+=dir*s.v*.025*so;if(s.r>1)s.r-=1;if(s.r<0)s.r+=1;const r1=s.r*R,l=so*s.v*R*.3*s.r,c=Math.cos(s.a),n=Math.sin(s.a);cx.strokeStyle=`rgba(255,255,255,${Math.min(1,s.r*1.4)})`;cx.lineWidth=.6+2.4*s.r;cx.beginPath();cx.moveTo(w+c*(r1-l),hh+n*(r1-l));cx.lineTo(w+c*r1,hh+n*r1);cx.stroke()})}
+function axis(x,p,e,i){const a=e.yr[0],z=e.yr[1],X=v=>30+(v-1400)/610*440,c=a+(z-a)*p;x.font="600 11px Inter";x.textAlign="center";x.strokeStyle="#2c3446";x.lineWidth=2;x.beginPath();x.moveTo(30,330);x.lineTo(470,330);x.stroke();x.fillStyle="#8d8ca0";for(let y=1400;y<=2000;y+=100){x.fillRect(X(y)-.5,324,1,12);x.fillText(y,X(y),354)}E.forEach((q,k)=>{if(k==i)return;x.globalAlpha=.25;x.fillStyle=q.c;x.fillRect(X(q.yr[0]),304-(k%3)*12,Math.max(3,X(q.yr[1])-X(q.yr[0])),7)});x.globalAlpha=1;x.shadowColor=e.c;x.shadowBlur=18;x.fillStyle=e.c;x.fillRect(X(a),310,Math.max(2,X(c)-X(a)),14);x.beginPath();x.arc(X(c),317,7+Math.sin(performance.now()/200)*2,0,7);x.fill();x.shadowBlur=0;x.font="300 72px Fraunces,serif";x.fillStyle="#fff";x.fillText(Math.round(c),250,190);x.font="600 12px Inter";x.fillStyle=e.c;x.fillText(a+" → "+z+"  ·  about "+(z-a)+" years",250,235)}
+function burst(x,p,m,u){x.strokeStyle=hs(u,70,.5);for(let k=0;k<4;k++){const r=((m*.5+k/4)%1)*260;x.globalAlpha=1-r/260;x.beginPath();x.arc(250,250,r,0,7);x.stroke()}x.fillStyle="#fff";for(let k=0;k<14;k++){const a=k*.45+m*.3,r=120+Math.sin(m*2+k)*60;x.globalAlpha=.4+.4*Math.sin(m*3+k);x.beginPath();x.arc(250+Math.cos(a)*r,250+Math.sin(a)*r,2.5,0,7);x.fill()}x.globalAlpha=1}
+const hs=(u,l,a=1,s=85)=>`hsla(${u},${s}%,${l}%,${a})`,rn=n=>{const v=Math.sin(n*127.1)*43758.5453;return v-Math.floor(v)};
+const F=[
+(x,p,m,u)=>{x.strokeStyle=hs(u,60,.3);for(let k=-8;k<=8;k++){x.beginPath();x.moveTo(250,200);x.lineTo(250+k*60,500);x.stroke()}for(let k=0;k<6;k++){x.beginPath();x.moveTo(0,200+k*k*9);x.lineTo(500,200+k*k*9);x.stroke()}x.strokeStyle=hs(u,70);x.lineWidth=3;x.beginPath();for(let a=0;a<p*14;a+=.05){const r=3*Math.pow(1.618,a/1.5708);x.lineTo(250+Math.cos(a)*r,250+Math.sin(a)*r)}x.stroke();x.strokeRect(150,150,200*p,200*p)},
+(x,p,m,u)=>{const cx0=250+Math.sin(m)*140,g=x.createRadialGradient(cx0,200,10,cx0,200,230);g.addColorStop(0,hs(u,80,.9));g.addColorStop(1,'transparent');x.fillStyle=g;x.fillRect(0,0,500,500);x.strokeStyle=hs(u,60,.7);for(let k=0;k<9;k++){x.beginPath();for(let y=0;y<=500;y+=10)x.lineTo(60*k+Math.sin(y/50+m+k)*40*p+y*.3-100,y);x.stroke()}},
+(x,p,m,u)=>{for(let k=0;k<7;k++){x.strokeStyle=hs(u+k*8,80,.8,70);x.beginPath();const w=m*.5*(k%2?1:-1);for(let a=0;a<p*18+1;a+=.1){const r=a*(6+k)*.5;x.lineTo(80+(k%3)*170+Math.cos(a+w)*r,90+Math.floor(k/3)*170+Math.sin(a+w)*r)}x.stroke()}},
+(x,p,m,u)=>{x.fillStyle=hs(u,85,.9,30);for(let k=0;k<5;k++){const h=240*cl(p*3-k*.4+.4);x.fillRect(70+k*80,400-h,34,h);if(h>10)x.fillRect(62+k*80,392-h,50,10)}x.fillRect(40,400,420,12);if(p>.7){x.beginPath();x.moveTo(40,130);x.lineTo(250,50);x.lineTo(460,130);x.closePath();x.fill()}},
+(x,p,m,u)=>{x.fillStyle=hs(u,90,.9,40);x.beginPath();x.arc(360,110,34,0,7);x.fill();x.fillStyle=hs(u,30,.9,40);x.beginPath();x.moveTo(0,330);x.lineTo(120,150+(1-p)*120);x.lineTo(210,330);x.fill();for(let k=0;k<5;k++){x.strokeStyle=hs(u,40+k*8,.9);x.lineWidth=3;x.beginPath();for(let a=0;a<=500;a+=8)x.lineTo(a,340+k*30+Math.sin(a/40+m*1.5+k)*(10+k*5));x.stroke()}x.fillStyle='#fff';x.fillRect(116,130+(1-p)*120,5,18)},
+(x,p,m,u)=>{for(let r=0;r<10;r++)for(let c=0;c<5;c++){if((r*5+c)/50>p)continue;x.fillStyle=hs(u+rn(r*9+c)*14,40+rn(c)*10,.9,45);x.fillRect(40+c*84+(r%2?-42:0),420-r*38,80,34)}},
+(x,p,m,u)=>{for(let k=0;k<p*500;k++){x.fillStyle=hs(u+rn(k+5)*70-20,45+rn(k+2)*35,.7);x.save();x.translate(rn(k)*500,rn(k+999)*500);x.rotate(rn(k+7)*3);x.fillRect(0,0,14,5);x.restore()}x.fillStyle=hs(u,85,.95);x.beginPath();x.arc(250,170,34+Math.sin(m*2)*3,0,7);x.fill()},
+(x,p,m,u)=>{for(let k=0;k<6;k++){x.fillStyle=hs(k*60+u,55,.9,95);x.beginPath();x.arc(120+k%3*130,140+Math.floor(k/3)*190,(50+Math.sin(m*2+k)*14)*cl(p*6-k*.5+.5),0,7);x.fill()}},
+(x,p,m,u)=>{for(let k=0;k<12;k++){const a=rn(k)*6.28,d=(1-p)*160+Math.sin(m+k)*8;x.save();x.translate(250+Math.cos(a)*d*rn(k+3),250+Math.sin(a)*d*rn(k+4));x.rotate(rn(k+8)*3+m*.1*(k%2));x.fillStyle=hs(u+k*12,30+rn(k)*35,.8,50);x.beginPath();x.moveTo(-60,-30);x.lineTo(70,-40);x.lineTo(30,60);x.closePath();x.fill();x.strokeStyle='#fff6';x.stroke();x.restore()}},
+(x,p,m,u)=>{for(let k=0;k<14;k++){const s=((m*140-k*26)%520+520)%520;x.fillStyle=hs(u,60,(1-k/14)*.8);x.beginPath();x.arc(s*.9+20,440-s*.7,44-k*2,0,7);x.fill()}},
+(x,p,m,u)=>{x.lineWidth=7;for(let k=0;k<12;k++){x.strokeStyle=hs(u+k*10,45+k*3,.9);x.beginPath();for(let a=0;a<=500;a+=6)x.lineTo(a,70+k*34+Math.sin(a/30+m*2+k)*(18+30*p)+Math.sin(a/9+m*5)*3);x.stroke()}},
+(x,p,m,u)=>{const q=Math.floor(m*3);for(let k=0;k<14;k++){x.save();x.translate(rn(q*20+k)*440,rn(q*20+k+50)*440);x.rotate(rn(k+q)*1.2-.6);x.fillStyle=k%3?hs(u+k*25,50+rn(k)*30,.85):'#eee';x.fillRect(0,0,50+rn(k+1)*110,30+rn(k+2)*70);if(k%4==0){x.fillStyle='#000';x.font='700 34px Inter';x.fillText('DADA',8,32)}x.restore()}},
+(x,p,m,u)=>{const d=p*60+Math.sin(m)*5,y0=230+d*.3;x.fillStyle=hs(u,60,.9,60);x.beginPath();x.ellipse(250,y0,130,110+d,0,0,7);x.fill();x.strokeStyle='#000';x.lineWidth=5;x.beginPath();x.moveTo(250,y0);x.lineTo(250,y0-70);x.moveTo(250,y0);x.lineTo(310,y0+30);x.stroke();for(let k=0;k<4;k++)x.fillRect(150+k*55,330+d*.6,14,(40+rn(k)*80)*p+(m*40+k*30)%40)},
+(x,p,m,u)=>{const x0=-50+300*p;x.fillStyle='#eee';x.beginPath();x.arc(250,250,150,0,7);x.fill();x.fillStyle=hs(u,50,1,90);x.beginPath();x.moveTo(x0-220,180);x.lineTo(x0,250);x.lineTo(x0-220,320);x.fill();x.fillStyle='#111';x.fillRect(0,440,500,14);x.save();x.translate(250,250);x.rotate(m*.3);x.fillRect(-200,-4,400,8);x.restore()},
+(x,p,m,u)=>{x.lineWidth=2.5;for(let k=0;k<Math.floor(p*40);k++){x.strokeStyle=hs(u+rn(k)*160,55+rn(k+3)*30,.85,80);x.beginPath();const a=rn(k+1)*500,b=rn(k+2)*500;x.moveTo(a,b);x.bezierCurveTo(a+rn(k+4)*300-150,b+rn(k+5)*300-150,a+rn(k+6)*300-150,b+rn(k+7)*300-150,rn(k+8)*500,rn(k+9)*500);x.stroke()}},
+(x,p,m,u)=>{for(let q=0;q<4;q++){const ox=q%2*250,oy=Math.floor(q/2)*250;x.fillStyle=hs(u+q*70,55,1,90);x.fillRect(ox,oy,250,250);x.fillStyle='#0007';for(let a=0;a<10;a++)for(let b=0;b<10;b++){x.beginPath();x.arc(ox+12+a*25,oy+12+b*25,(a+b)/2*(1+Math.sin(m*2+q))*.4*p+1,0,7);x.fill()}}},
+(x,p,m,u)=>{for(let k=26;k>0;k--){const s=k*17+Math.sin(m*2+k*.4)*6*p;x.fillStyle=k%2?'#fff':'#000';x.save();x.translate(250,250);x.rotate(Math.sin(m*.5)*.005*k*p);x.fillRect(-s/2,-s/2,s,s);x.restore()}}];
+const B=[
+(x,w,h,m,u)=>{const g=x.createRadialGradient(w/2,h,0,w/2,h,h*1.1);g.addColorStop(0,hs(u,55,.35));g.addColorStop(1,'transparent');x.fillStyle=g;x.fillRect(0,0,w,h);for(let k=0;k<70;k++){const y=h-((m*12*(.3+rn(k))+rn(k+1)*h)%h);x.fillStyle=hs(u,75,.5*Math.sin(y/h*3.14));x.beginPath();x.arc(rn(k+2)*w+Math.sin(m+k)*10,y,1+rn(k+3)*2,0,7);x.fill()}},
+(x,w,h,m,u)=>{for(let k=0;k<3;k++){const a=Math.sin(m*.4+k*2)*.5,sx=w*(.2+k*.3),g=x.createLinearGradient(sx,0,sx+a*w,h);g.addColorStop(0,hs(u,80,.28));g.addColorStop(1,'transparent');x.fillStyle=g;x.beginPath();x.moveTo(sx-8,0);x.lineTo(sx+8,0);x.lineTo(sx+a*w+w*.18,h);x.lineTo(sx+a*w-w*.18,h);x.fill()}},
+(x,w,h,m,u)=>{for(let k=0;k<40;k++){const y=((m*18*(.4+rn(k))+rn(k+1)*h)%(h+40))-20,px=rn(k+2)*w+Math.sin(m*.8+k)*30;x.save();x.translate(px,y);x.rotate(m*.5+k);x.fillStyle=hs(u+rn(k)*30,75,.35,70);x.beginPath();x.ellipse(0,0,9,4.5,0,0,7);x.fill();x.restore()}},
+(x,w,h,m,u)=>{for(let k=0;k<9;k++){x.fillStyle=hs(u,70,.04+.03*Math.sin(m+k));x.fillRect(w*k/9+4,0,w/9-8,h)}for(let k=0;k<4;k++){const s=(m*20+k*w/4)%w,g=x.createLinearGradient(s,0,s+60,0);g.addColorStop(0,'transparent');g.addColorStop(.5,hs(u,80,.12));g.addColorStop(1,'transparent');x.fillStyle=g;x.fillRect(s,0,60,h)}},
+(x,w,h,m,u)=>{for(let k=0;k<6;k++){const px=((m*10*(k+1)+k*200)%(w+400))-200,py=h*(.2+k*.12),g=x.createRadialGradient(px,py,0,px,py,h*.45);g.addColorStop(0,hs(u,40,.25,25));g.addColorStop(1,'transparent');x.fillStyle=g;x.fillRect(0,0,w,h)}const f=Math.max(0,Math.sin(m*1.7)*Math.sin(m*5.3)-.8)*5;if(f>0){x.fillStyle=`rgba(255,255,255,${f*.25})`;x.fillRect(0,0,w,h)}},
+(x,w,h,m,u)=>{x.fillStyle=hs(u,60,.05,10);for(let k=0;k<h;k+=6)x.fillRect(0,k,w,1);for(let k=0;k<90;k++){x.fillStyle=hs(u,70,.3,15);x.fillRect(rn(k)*w+Math.sin(m*.5+k)*20,(m*8*(.2+rn(k+1))+rn(k+2)*h)%h,2,2)}},
+(x,w,h,m,u)=>{for(let k=0;k<60;k++){const a=Math.sin(((m*.5+rn(k))%1)*3.14)*.5;x.fillStyle=hs(u+rn(k+3)*80-20,60,a,70);x.save();x.translate(rn(k+1)*w,rn(k+2)*h);x.rotate(rn(k+4)*3);x.fillRect(-14,-4,28,8);x.restore()}},
+(x,w,h,m,u)=>{x.globalCompositeOperation='lighter';for(let k=0;k<5;k++){const px=w*(.5+.4*Math.sin(m*.3+k*1.7)),py=h*(.5+.4*Math.cos(m*.25+k*2.3)),g=x.createRadialGradient(px,py,0,px,py,h*.5);g.addColorStop(0,hs(u+k*70,55,.35,95));g.addColorStop(1,'transparent');x.fillStyle=g;x.fillRect(0,0,w,h)}x.globalCompositeOperation='source-over'},
+(x,w,h,m,u)=>{for(let k=0;k<14;k++){x.save();x.translate(rn(k)*w,rn(k+1)*h+Math.sin(m*.4+k)*20);x.rotate(m*.1*(k%2?1:-1)+k);x.fillStyle=hs(u+k*14,50,.12);x.strokeStyle=hs(u+k*14,70,.3);x.beginPath();x.moveTo(-50,-30);x.lineTo(60,-20);x.lineTo(10,50);x.closePath();x.fill();x.stroke();x.restore()}},
+(x,w,h,m,u)=>{for(let k=0;k<30;k++){const l=80+rn(k)*220,px=((m*(200+rn(k+1)*400)+rn(k+2)*w)%(w+l))-l,py=rn(k+3)*h,g=x.createLinearGradient(px,0,px+l,0);g.addColorStop(0,'transparent');g.addColorStop(1,hs(u,70,.5));x.strokeStyle=g;x.lineWidth=1+rn(k+4)*2;x.beginPath();x.moveTo(px,py);x.lineTo(px+l,py-l*.15);x.stroke()}},
+(x,w,h,m,u)=>{x.lineWidth=3;for(let k=0;k<14;k++){x.strokeStyle=hs(u+k*8,50,.18);x.beginPath();for(let a=0;a<=6.4;a+=.1){const r=k*28+Math.sin(a*3+m*1.5+k)*10;x.lineTo(w/2+Math.cos(a)*r*1.4,h/2+Math.sin(a)*r)}x.stroke()}},
+(x,w,h,m,u)=>{const q=Math.floor(m*2);for(let k=0;k<12;k++){if(rn(q+k*7)<.4)continue;x.save();x.translate(rn(q*3+k)*w,rn(q*3+k+40)*h);x.rotate(rn(k+q)*.8-.4);x.fillStyle=k%3?hs(u+k*30,60,.1):'rgba(240,235,220,.07)';x.fillRect(0,0,60+rn(k)*140,30+rn(k+1)*80);x.restore()}},
+(x,w,h,m,u)=>{for(let k=0;k<22;k++){const y=h-((m*14*(.3+rn(k))+rn(k+1)*h)%(h+60))+30,px=rn(k+2)*w+Math.sin(m*.6+k)*25,r=8+rn(k+3)*26,g=x.createRadialGradient(px-r*.3,y-r*.3,1,px,y,r);g.addColorStop(0,hs(u,90,.45));g.addColorStop(1,hs(u+40,50,.06));x.fillStyle=g;x.beginPath();x.arc(px,y,r,0,7);x.fill()}},
+(x,w,h,m,u)=>{for(let k=0;k<8;k++){const s=((m*(30+k*12)+k*140)%(w+200))-100;x.fillStyle=k%3?hs(u,50,.12,90):'rgba(255,255,255,.06)';x.fillRect(s,k*h/8,160+k*10,8+k%3*6)}x.strokeStyle=hs(u,60,.3);x.lineWidth=2;for(let k=0;k<3;k++){x.beginPath();x.moveTo(0,h*(.2+k*.3)+Math.sin(m+k)*10);x.lineTo(w,h*(.9-k*.3));x.stroke()}},
+(x,w,h,m,u)=>{x.lineCap='round';for(let k=0;k<10;k++){const ph=(m*.18+rn(k))%1;x.strokeStyle=hs(u+rn(k+1)*150,55,Math.sin(ph*3.14)*.35,80);x.lineWidth=6+rn(k+2)*18;const sx=rn(k+3)*w,sy=rn(k+4)*h;x.beginPath();x.moveTo(sx,sy);x.bezierCurveTo(sx+120,sy-80*ph,sx+220*ph,sy+110,sx+300*ph,sy+40);x.stroke()}},
+(x,w,h,m,u)=>{for(let a=0;a<w;a+=18)for(let b=0;b<h;b+=18){x.fillStyle=hs(u,60,.25,90);x.beginPath();x.arc(a,b,5*(.5+.5*Math.sin(a/70+b/90+m*2)),0,7);x.fill()}},
+(x,w,h,m,u)=>{x.lineWidth=1.5;for(let s=0;s<2;s++){const cx0=w/2+Math.sin(m*.5)*60*(s?-1:1);x.strokeStyle=hs(u,s?70:90,.28,s?90:10);for(let r=6;r<h*1.1;r+=10){x.beginPath();x.arc(cx0,h/2,r,0,7);x.stroke()}}}
+];
+const LY=[
+(d)=>[`translateX(${d*58}vmin) rotateY(${-d*38}deg) scale(${1-Math.abs(d)*.12})`],
+(d)=>[`translate(${d*46}vmin,${Math.abs(d)*6}vmin) rotate(${d*7}deg)`,null,`brightness(${Math.max(.15,1-Math.abs(d)*.7)})`],
+(d,k,m)=>[`translate(${d*52}vmin,-22vmin) rotate(${Math.sin(m*1.3+k)*5+d*3}deg) translateY(22vmin)`],
+(d)=>[`translate(${d*8}vmin,${-d*62}vmin) scale(${1-Math.abs(d)*.1})`],
+(d,k,m)=>[`translate(${d*55}vmin,${Math.sin(m*.8+k)*3}vmin)`,null,`blur(${Math.abs(d)*3}px)`],
+(d)=>[`translate(${d<0?d*52:0}vmin,${d>0?-d*80:0}vmin)`,d>0?cl(1-d*.6):cl(1.6+d*.9)],
+(d)=>[`translate(${d*6}vmin,${d*3}vmin) scale(${1-Math.abs(d)*.08})`,cl(1-Math.abs(d)*.8),`blur(${Math.abs(d)*8}px)`],
+(d)=>[`translateX(${d*56}vmin) rotate(${d*28}deg) scale(${1-Math.abs(d)*.1})`,null,`hue-rotate(${d*90}deg) saturate(1.6)`],
+(d)=>[`translateX(${d*54}vmin) skewY(${d*14}deg) rotateY(${d*30}deg)`],
+(d)=>[`translateX(${d*95}vmin) skewX(${-d*25}deg)`,null,`blur(${Math.abs(d)*2}px)`],
+(d,k,m)=>{const j=Math.abs(d)>.3?1.2:0;return[`translate(${d*52+Math.sin(m*9+k)*j}vmin,${Math.cos(m*7+k)*j}vmin) rotate(${d*10}deg) scale(${1+Math.abs(d)*.15})`]},
+(d,k)=>{const a=Math.min(1,Math.abs(d));return[`translate(${d*30+(rn(k)-.5)*70*a}vmin,${(rn(k+9)-.5)*60*a}vmin) rotate(${(rn(k+3)-.5)*60*a}deg) scale(${1-a*.35})`]},
+(d,k,m)=>[`translate(${d*50}vmin,${Math.sin(m+k)*4}vmin) rotateX(${d*120}deg) rotateZ(${d*20}deg)`],
+(d)=>[`translate(${d*50}vmin,${-d*32}vmin) rotate(-14deg) scale(${1-Math.abs(d)*.1})`],
+(d)=>[`translateY(62vmin) rotate(${d*38}deg) translateY(-62vmin) scale(${1+(1-Math.min(1,Math.abs(d)))*.25})`],
+(d,k)=>[`translate(${d*50}vmin,${(k%2?1:-1)*Math.abs(d)*8}vmin) rotate(${-d*6}deg) scale(${1-Math.abs(d)*.2})`,null,`contrast(1.3) saturate(1.8)`],
+(d)=>[`scale(${Math.pow(1.9,-d)})`,cl(1.3-Math.abs(d)*.8)]];
+let ac,mg,mon=false,stp=0,mtm;const mtof=m=>440*2**((m-69)/12);
+function ir(){const l=ac.sampleRate*4,b=ac.createBuffer(2,l,ac.sampleRate);for(let c=0;c<2;c++){const d=b.getChannelData(c);for(let k=0;k<l;k++)d[k]=(Math.random()*2-1)*Math.pow(1-k/l,2.5)}return b}
+function nt(m,t0,d,ty,v,dt,ft){const o=ac.createOscillator(),g=ac.createGain(),f=ac.createBiquadFilter();o.type=ty;o.frequency.value=mtof(m);o.detune.value=dt||0;f.type='lowpass';f.frequency.value=ft||1200;g.gain.setValueAtTime(.0001,t0);g.gain.linearRampToValueAtTime(v,t0+d*.45);g.gain.linearRampToValueAtTime(.0001,t0+d);o.connect(f);f.connect(g);g.connect(mg);o.start(t0);o.stop(t0+d+.1)}
+function hit(t0,v){const o=ac.createOscillator(),g=ac.createGain();o.type='sine';o.frequency.setValueAtTime(120,t0);o.frequency.exponentialRampToValueAtTime(36,t0+.7);g.gain.setValueAtTime(v,t0);g.gain.exponentialRampToValueAtTime(.0001,t0+2);o.connect(g);g.connect(mg);o.start(t0);o.stop(t0+2.1)}
+const PR=[[0,3,7,10],[-4,0,3,7],[-2,2,5,9],[-7,-3,0,3],[-5,0,3,8],[-9,-4,0,3]];
+function seq(){if(!mon)return;const t0=ac.currentTime+.05,sh=Math.max(cur,0)%6-3,ch=PR[stp++%6];ch.forEach((n,j)=>{nt(36+sh+n,t0,10,'sawtooth',.03,j*5-8,450);nt(48+sh+n,t0,10,'sawtooth',.022,8-j*4,800)});nt(24+sh+ch[0],t0,10,'sine',.18,0,200);hit(t0,.45);hit(t0+5,.3);for(let k=0;k<5;k++)nt(72+sh+[0,3,7,10,12,15][Math.floor(Math.random()*6)],t0+k*1.8+1,4.5,'sine',.045,0,3500);mtm=setTimeout(seq,9800)}
+function mus(on){mon=on;clearTimeout(mtm);$('#mu').textContent=on?'♪ MUSIC ON':'♪ MUSIC OFF';if(on){if(!ac){ac=new(window.AudioContext||window.webkitAudioContext)();mg=ac.createGain();mg.gain.value=.55;const lp=ac.createBiquadFilter();lp.type='lowpass';lp.frequency.value=2200;mg.connect(lp);lp.connect(ac.destination);const cv=ac.createConvolver();cv.buffer=ir();const wg=ac.createGain();wg.gain.value=.9;mg.connect(cv);cv.connect(wg);wg.connect(ac.destination)}ac.resume();seq()}}
+$('#mu').onclick=()=>mus(!mon);let first=1;['click','keydown','touchend'].forEach(ev=>addEventListener(ev,()=>{if(first){first=0;if(!mon)mus(true)}}));
+function tick(){const r=story.getBoundingClientRect();window.tg=cl(-r.top/(r.height-H()))*17;window.cg=(window.cg||0);window.cg+=(window.tg-window.cg)*.12;if(Math.abs(window.tg-window.cg)<.0005)window.cg=window.tg;draw(window.cg);requestAnimationFrame(tick)}
+tick();
+document.addEventListener("click",ev=>{const b=ev.target.closest(".ring");if(!b)return;const k=+b.dataset.k;scrollTo({top:story.offsetTop+k/17*(story.offsetHeight-H()),behavior:"smooth"})});
+</script></body></html>
